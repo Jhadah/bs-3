@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b6ji7q5850qfy"]
+
+[ext_resource type="PackedScene" uid="uid://bqud6pewgek6s" path="res://UI_Elements/Start_Menu/start_menu.tscn" id="2_j8job"]
+[ext_resource type="PackedScene" uid="uid://cpp5ux1eua8ua" path="res://UI_Elements/Character_Selection/character_selection.tscn" id="3_3f78f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w6f7q"]
+
+[node name="World" type="Node3D" unique_id=1309418093]
+
+[node name="PlayersContainer" type="Node3D" parent="." unique_id=2137762684 groups=["players_container"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5187072, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayersContainer" unique_id=178980458]
+_spawnable_scenes = PackedStringArray("uid://ckgsetcic63bg", "uid://clprfusb5ntd1")
+spawn_path = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1294681933]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_w6f7q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2064444597]
+transform = Transform3D(1, 0, 0, 0, 0.93109536, 0.36477584, 0, -0.36477584, 0.93109536, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1469373844]
+transform = Transform3D(1, 0, 0, 0, 0.8126495, 0.5827528, 0, -0.5827528, 0.8126495, 0, 10.533055, 20.927322)
+
+[node name="UI_Overlays" type="CanvasLayer" parent="." unique_id=1043303348]
+
+[node name="CharacterSelection" parent="UI_Overlays" unique_id=542370347 groups=["ui_panels"] instance=ExtResource("3_3f78f")]
+z_index = 1
+offset_bottom = -31.0
+
+[node name="StartMenu" parent="UI_Overlays" unique_id=145739189 groups=["ui_panels"] instance=ExtResource("2_j8job")]
+z_index = 2
+offset_top = 31.0

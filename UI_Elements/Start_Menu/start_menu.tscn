@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bqud6pewgek6s"]
+
+[ext_resource type="Script" uid="uid://c5fg7uee7g08d" path="res://UI_Elements/Start_Menu/start_menu.gd" id="1_8dp5y"]
+
+[node name="StartMenu" type="Control" unique_id=145739189]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dp5y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=203453220]
+layout_mode = 0
+offset_left = -62.0
+offset_top = -67.0
+offset_right = 1241.0
+offset_bottom = 761.0
+color = Color(0.27003235, 0.5135033, 0.4783932, 1)
+
+[node name="HostButton" type="Button" parent="." unique_id=936746384]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 283.0
+offset_right = 601.0
+offset_bottom = 314.0
+text = "HOST"
+
+[node name="JoinButton" type="Button" parent="." unique_id=162638868]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 347.0
+offset_right = 600.0
+offset_bottom = 378.0
+text = "JOIN"
+
+[connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]

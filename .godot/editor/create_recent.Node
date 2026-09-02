@@ -1,0 +1,15 @@
+Node3D
+MeshInstance3D
+Camera3D
+DirectionalLight3D
+AreaLight3D
+OmniLight3D
+ColorRect
+TabContainer
+CanvasLayer
+Control
+Button
+ItemList
+MultiplayerSynchronizer
+Entity
+CharacterBody3D

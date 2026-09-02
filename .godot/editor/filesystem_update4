@@ -1,0 +1,12 @@
+res://Entities/PlayableCharacters/character_2/character_2.tscn
+res://Entities/PlayableCharacters/character_1/character_1.tscn
+res://World/world.tscn
+res://World/multiplayer_spawner.gd
+res://Multiplayer/CharacterSelectionManager.gd
+res://World/players_container.gd
+res://Entities/PlayableCharacters/!base/playable_character.tscn
+res://Entities/Entity.gd
+res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
+res://UI_Elements/Character_Selection/character_selection.gd
+res://Entities/PlayableCharacters/character_1/Character1Stats.tres
+res://Entities/PlayableCharacters/character_2/Character2Stats.tres

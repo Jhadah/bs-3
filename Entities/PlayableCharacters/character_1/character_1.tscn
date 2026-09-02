@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ckgsetcic63bg"]
+
+[ext_resource type="PackedScene" uid="uid://bep8gkhfdoc5a" path="res://Entities/PlayableCharacters/!base/playable_character.tscn" id="1_hfrbj"]
+[ext_resource type="Script" uid="uid://bvi3n2hp0k23o" path="res://Entities/PlayableCharacters/character_1/character_1.gd" id="2_mfn5y"]
+[ext_resource type="Resource" uid="uid://yw35wwfsy18n" path="res://Entities/PlayableCharacters/character_1/Character1Stats.tres" id="3_djnaa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w6f7q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxffx"]
+albedo_color = Color(1, 0.57254905, 1, 1)
+
+[node name="Character1" unique_id=2141166769 instance=ExtResource("1_hfrbj")]
+script = ExtResource("2_mfn5y")
+stats = ExtResource("3_djnaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1189933597]
+mesh = SubResource("CapsuleMesh_w6f7q")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxffx")
