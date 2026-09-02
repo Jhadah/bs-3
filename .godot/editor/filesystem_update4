@@ -12,3 +12,9 @@ res://Multiplayer/Networking.gd
 res://Entities/PlayableCharacters/Roster.gd
 res://UI_Elements/Start_Menu/start_menu.gd
 res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
+res://Structures/Structure.gd
+res://Structures/static_body_3d.tscn
+res://Structures/structure.tscn
+res://Structures/!base/structure.tscn
+res://Structures/Nexus/nexus.tscn
+res://Structures/nexus/nexus.tscn

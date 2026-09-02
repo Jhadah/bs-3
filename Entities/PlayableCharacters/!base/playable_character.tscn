@@ -23,7 +23,7 @@ replication_config = SubResource("SceneReplicationConfig_ul0ih")
 shape = SubResource("CylinderShape3D_ur7ma")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1109440232]
-transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, 0, 11.417135, 5.662264)
+transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, 0, 20.46234, 10.494045)
 top_level = true
 script = ExtResource("2_m0uoq")
 

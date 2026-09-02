@@ -1,7 +1,9 @@
+Node3D
+CollisionShape3D
+Structure
+StaticBody3D
 MeshInstance3D
 Camera3D
-CollisionShape3D
-Node3D
 DirectionalLight3D
 AreaLight3D
 OmniLight3D
@@ -10,5 +12,3 @@ TabContainer
 CanvasLayer
 Control
 Button
-ItemList
-MultiplayerSynchronizer
