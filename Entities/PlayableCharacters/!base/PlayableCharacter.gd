@@ -1,12 +1,15 @@
 class_name PlayableCharacter 
 extends Entity
 
+@onready var camera = $Camera3D
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		handle_movement()
+		camera.make_current()
 
 func handle_movement():
 	var input = Input.get_vector("a", "d", "w", "s")
