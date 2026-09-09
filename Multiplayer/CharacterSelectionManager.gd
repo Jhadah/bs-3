@@ -17,7 +17,6 @@ func spawn_player(peer_id: int, character_id: int):
 	var scene: PackedScene = Roster.characters[character_id].scene
 	var instance = scene.instantiate() as Node3D
 	instance.name = str(peer_id)
-	#instance.set_multiplayer_authority(peer_id)
 	
 	var players_container = get_tree().get_first_node_in_group("players_container")
 	players_container.add_child(instance)

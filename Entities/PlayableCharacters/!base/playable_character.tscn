@@ -7,14 +7,16 @@
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ur7ma"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6f7q"]
 
-[node name="PlayableCharacter" type="CharacterBody3D" unique_id=2141166769]
+[node name="PlayableCharacter" type="CharacterBody3D" unique_id=2141166769 groups=["players"]]
 script = ExtResource("1_m0uoq")
-metadata/_custom_type_script = "uid://cu8voo1p2fi35"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=601006303]
 replication_config = SubResource("SceneReplicationConfig_ul0ih")
@@ -23,9 +25,11 @@ replication_config = SubResource("SceneReplicationConfig_ul0ih")
 shape = SubResource("CylinderShape3D_ur7ma")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1109440232]
-transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, 0, 20.46234, 10.494045)
+transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, -1.9073486e-06, 14.735842, 7.120764)
 top_level = true
 script = ExtResource("2_m0uoq")
 
 [node name="DEBUG_MODEL" type="MeshInstance3D" parent="." unique_id=410065059]
 mesh = SubResource("CapsuleMesh_w6f7q")
+
+[node name="Hitboxes" type="Node3D" parent="." unique_id=1132151024]

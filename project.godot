@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 Networking="*uid://bwqdmsua2vkpi"
 Roster="*uid://dy0v8yyj22jvc"
 CharacterSelectionManager="*uid://cdnmxpnech85c"
+MouseManager="*uid://c1o1i00hstk6x"
 
 [display]
 
@@ -28,6 +29,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="bs-3"
+
+[global_group]
+
+players=""
 
 [input]
 

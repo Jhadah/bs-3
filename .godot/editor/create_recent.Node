@@ -1,7 +1,7 @@
-Node3D
-CollisionShape3D
-Structure
 StaticBody3D
+CollisionShape3D
+Area3D
+Node3D
 MeshInstance3D
 Camera3D
 DirectionalLight3D
@@ -11,4 +11,3 @@ ColorRect
 TabContainer
 CanvasLayer
 Control
-Button
