@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cfjxj4e4ojsgx"]
+
+[ext_resource type="Texture2D" uid="uid://cwqbk6eb48ikp" path="res://VFX/Entities/Characters/character1/main_attack.png" id="1_eeouk"]
+[ext_resource type="Script" uid="uid://4ks2te6iy2fq" path="res://VFX/Vfx.gd" id="2_ckwjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ide"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(0, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgi50"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(100, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chapd"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(200, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0ca"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(300, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edo7h"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(400, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd7ri"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(500, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufpon"]
+atlas = ExtResource("1_eeouk")
+region = Rect2(600, 0, 99, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6f7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0ide")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgi50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chapd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l0ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edo7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd7ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufpon")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="SlashVFX" type="AnimatedSprite3D" unique_id=790995486]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0.15, 0, -1.7)
+sprite_frames = SubResource("SpriteFrames_w6f7q")
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_ckwjx")
+metadata/_custom_type_script = "uid://4ks2te6iy2fq"

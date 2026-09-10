@@ -36,13 +36,13 @@ offset_bottom = -31.0
 z_index = 2
 offset_top = 31.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1406967565]
+[node name="floor" type="StaticBody3D" parent="." unique_id=1406967565]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=710215101]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=710215101]
 transform = Transform3D(118.69163, 0, 0, 0, 1, 0, 0, 0, 118.69163, 0, 0, 0)
 mesh = SubResource("BoxMesh_w6f7q")
 surface_material_override/0 = SubResource("StandardMaterial3D_ur7ma")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=448486216]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=448486216]
 transform = Transform3D(118.69164, 0, 0, 0, 1, 0, 0, 0, 118.69164, 0, -0.13373947, 0)
 shape = SubResource("ConcavePolygonShape3D_j8job")
