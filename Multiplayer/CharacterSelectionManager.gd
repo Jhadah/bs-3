@@ -1,6 +1,5 @@
 extends Node
 
-
 var selection: Dictionary = {}
 
 @rpc("any_peer", "call_local","reliable")
@@ -20,3 +19,5 @@ func spawn_player(peer_id: int, character_id: int):
 	
 	var players_container = get_tree().get_first_node_in_group("players_container")
 	players_container.add_child(instance)
+	
+	EntityRegistry.register(instance, peer_id)

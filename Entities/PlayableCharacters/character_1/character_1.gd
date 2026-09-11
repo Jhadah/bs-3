@@ -2,47 +2,57 @@ extends PlayableCharacter
 
 @onready var main_attack_hb = $Hitboxes/MainAttackHB
 
-@onready var main_attack_vfx = preload("uid://cfjxj4e4ojsgx")
+#@onready var main_attack_vfx = 
 
 var main_attack_cast_time: float = 1.0
 var main_attack_self_slow: float = 80
+
+func _ready() -> void:
+	super._ready()
+	
+	vfx_library = {
+		"main_attack": preload("uid://cfjxj4e4ojsgx"),
+	}
 
 func request_main_attack():
 	var mouse_pos = MouseManager.get_cursor_position_3d()
 	if mouse_pos:
 		look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
-	super.request_main_attack()
+	super.request_main_attack() # semplicemente l'invio rpc
 
-@rpc("any_peer","call_local", "reliable") #call local solo se l'host è un giocatore
-func cast_main_attack(attacker_peer_id: int):
+@rpc("any_peer","call_local", "reliable")
+func cast_main_attack():
 	
-	#region estetica
-	
-	var vfx: Vfx = main_attack_vfx.instantiate()
-	add_child(vfx)
-	
-	#endregion
+	instantiate_vfx.rpc("main_attack")
 		
 	if multiplayer.is_server():
 		
 		#region soggetti dell'azione
 		
-		var attacker: Entity = get_peer_node_from_peer_id(attacker_peer_id)
+		var sender_id = multiplayer.get_remote_sender_id()
+		
+		var attacker_id = EntityRegistry.get_entity_id_for_peer_id(sender_id)
+		var attacker: Entity
+		
+		if sender_id == 0:
+			attacker = self
+		else:
+			attacker = EntityRegistry.get_entity(attacker_id)
+		
+		var attacker_stats: EntityStats = attacker.stats
+		
 		var targets: Array = main_attack_hb.get_overlapping_bodies()
 		
 		#endregion
 		
-		
-		
 		#region funzionalità dell'abilità
-		
-		
 		
 		for target in targets:
 			if target.has_method("take_damage") and target != self:
-				target.take_damage.rpc(attacker.stats.attack_damage)
+				target.take_damage.rpc(attacker_stats.attack_damage)
 				
 		slow_percentage += main_attack_self_slow
 		await get_tree().create_timer(main_attack_cast_time).timeout
 		slow_percentage -= main_attack_self_slow
+		
 		#endregion

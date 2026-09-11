@@ -1,9 +1,7 @@
-res://Entities/Entity.gd
-res://Entities/PlayableCharacters/character_1/vfx/slash_vfx.tscn
-res://Entities/PlayableCharacters/character_1/character_1.tscn
-res://VFX/Entities/Characters/slash_vfx.tscn
-res://VFX/Entities/Characters/character1/slash_vfx.tscn
-res://VFX/Vfx.gd
-res://Entities/PlayableCharacters/character_1/character_1.gd
 res://World/world.tscn
-res://Entities/PlayableCharacters/!base/playable_character.tscn
+res://Multiplayer/CharacterSelectionManager.gd
+res://Entities/PlayableCharacters/character_1/character_1.gd
+res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
+res://Entities/Entity.gd
+res://Entities/EntityRegistry.gd
+res://VFX/Entities/Characters/character1/slash_vfx.tscn

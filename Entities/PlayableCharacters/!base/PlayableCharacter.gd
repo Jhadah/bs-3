@@ -1,10 +1,9 @@
 class_name PlayableCharacter 
 extends Entity
 
-@onready var camera = $Camera3D
+var peer_id: int = -1
 
-enum SelfStatus {NEUTRAL, STILL_CASTING}
-var current_self_status = SelfStatus.NEUTRAL
+@onready var camera = $Camera3D
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -38,18 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			request_main_attack()
 
 func request_main_attack():
-	cast_main_attack.rpc_id(1, multiplayer.get_unique_id())
+	cast_main_attack.rpc_id(1)
 
-func cast_main_attack(_attacker_peer_id: int):
+@rpc("any_peer","call_local", "reliable") #call local solo se l'host è un giocatore
+func cast_main_attack():
 	pass
-
-func get_peer_node_from_peer_id(peer_id: int) -> Entity: 
-	var peer_node: Entity = null
-	
-	for player in get_tree().get_nodes_in_group("players"):
-		if player.get_multiplayer_authority() == peer_id:
-			peer_node = player
-			break
-
-	
-	return peer_node

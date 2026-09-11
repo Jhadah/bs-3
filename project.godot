@@ -20,6 +20,7 @@ Networking="*uid://bwqdmsua2vkpi"
 Roster="*uid://dy0v8yyj22jvc"
 CharacterSelectionManager="*uid://cdnmxpnech85c"
 MouseManager="*uid://c1o1i00hstk6x"
+EntityRegistry="*uid://cv1pm6h7y6c7r"
 
 [display]
 
