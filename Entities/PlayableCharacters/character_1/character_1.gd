@@ -1,11 +1,10 @@
 extends PlayableCharacter
 
-@onready var main_attack_hb = $Hitboxes/MainAttackHB
+@onready var main_attack_hb = $Hitboxes/MainAttack
 
-#@onready var main_attack_vfx = 
 
-var main_attack_cast_time: float = 1.0
-var main_attack_self_slow: float = 80
+var main_attack_cast_time: float = 0.3
+var main_attack_self_slow: float = 40
 
 func _ready() -> void:
 	super._ready()
@@ -17,13 +16,15 @@ func _ready() -> void:
 func request_main_attack():
 	var mouse_pos = MouseManager.get_cursor_position_3d()
 	if mouse_pos:
+		deliberate_rotation = true
 		look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
+		$Hitboxes/MainAttack.look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
 	super.request_main_attack() # semplicemente l'invio rpc
 
 @rpc("any_peer","call_local", "reliable")
 func cast_main_attack():
 	
-	instantiate_vfx.rpc("main_attack")
+	instantiate_vfx.rpc("main_attack", "MainAttack")
 		
 	if multiplayer.is_server():
 		
@@ -33,12 +34,10 @@ func cast_main_attack():
 		
 		var attacker_id = EntityRegistry.get_entity_id_for_peer_id(sender_id)
 		var attacker: Entity
-		
 		if sender_id == 0:
 			attacker = self
 		else:
 			attacker = EntityRegistry.get_entity(attacker_id)
-		
 		var attacker_stats: EntityStats = attacker.stats
 		
 		var targets: Array = main_attack_hb.get_overlapping_bodies()
@@ -50,9 +49,10 @@ func cast_main_attack():
 		for target in targets:
 			if target.has_method("take_damage") and target != self:
 				target.take_damage.rpc(attacker_stats.attack_damage)
-				
+		
 		slow_percentage += main_attack_self_slow
 		await get_tree().create_timer(main_attack_cast_time).timeout
 		slow_percentage -= main_attack_self_slow
+		deliberate_rotation = false
 		
 		#endregion

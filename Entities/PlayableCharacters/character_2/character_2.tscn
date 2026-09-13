@@ -9,6 +9,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur7ma"]
 albedo_color = Color(0, 0.4745098, 1, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_733le"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Character2" unique_id=2141166769 instance=ExtResource("1_oxffx")]
 script = ExtResource("2_nwtux")
 stats = ExtResource("3_733le")
@@ -16,3 +19,6 @@ stats = ExtResource("3_733le")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1751932379]
 mesh = SubResource("CapsuleMesh_w6f7q")
 surface_material_override/0 = SubResource("StandardMaterial3D_ur7ma")
+
+[node name="Sprite3D" parent="." index="7" unique_id=538005959]
+texture = SubResource("ViewportTexture_733le")

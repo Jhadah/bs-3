@@ -16,26 +16,6 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [node name="World" type="Node3D" unique_id=1309418093]
 
-[node name="PlayersContainer" type="Node3D" parent="." unique_id=2137762684 groups=["players_container"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5187072, 0)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayersContainer" unique_id=178980458]
-_spawnable_scenes = PackedStringArray("uid://ckgsetcic63bg", "uid://clprfusb5ntd1")
-spawn_path = NodePath("..")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2064444597]
-transform = Transform3D(1, 0, 0, 0, 0.93109536, 0.36477584, 0, -0.36477584, 0.93109536, 0, 0, 0)
-
-[node name="UI_Overlays" type="CanvasLayer" parent="." unique_id=1043303348]
-
-[node name="CharacterSelection" parent="UI_Overlays" unique_id=542370347 groups=["ui_panels"] instance=ExtResource("3_3f78f")]
-z_index = 1
-offset_bottom = -31.0
-
-[node name="StartMenu" parent="UI_Overlays" unique_id=145739189 groups=["ui_panels"] instance=ExtResource("2_j8job")]
-z_index = 2
-offset_top = 31.0
-
 [node name="floor" type="StaticBody3D" parent="." unique_id=1406967565]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=710215101]
@@ -46,3 +26,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ur7ma")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=448486216]
 transform = Transform3D(118.69164, 0, 0, 0, 1, 0, 0, 0, 118.69164, 0, -0.13373947, 0)
 shape = SubResource("ConcavePolygonShape3D_j8job")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2064444597]
+transform = Transform3D(1, 0, 0, 0, 0.93109536, 0.36477584, 0, -0.36477584, 0.93109536, 0, 0, 0)
+
+[node name="PlayersContainer" type="Node3D" parent="." unique_id=2137762684 groups=["players_container"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5187072, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayersContainer" unique_id=178980458]
+_spawnable_scenes = PackedStringArray("uid://ckgsetcic63bg", "uid://clprfusb5ntd1")
+spawn_path = NodePath("..")
+
+[node name="UI_Overlays" type="CanvasLayer" parent="." unique_id=1043303348]
+
+[node name="CharacterSelection" parent="UI_Overlays" unique_id=542370347 groups=["ui_panels"] instance=ExtResource("3_3f78f")]
+z_index = 1
+offset_bottom = -31.0
+
+[node name="StartMenu" parent="UI_Overlays" unique_id=145739189 groups=["ui_panels"] instance=ExtResource("2_j8job")]
+z_index = 2
+offset_top = 31.0

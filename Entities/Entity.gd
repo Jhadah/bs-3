@@ -7,6 +7,7 @@ var entity_id: int
 
 var vfx_library: Dictionary = {}
 
+var dir: Vector3
 var current_health: int
 var slow_percentage: float = 0.0
 
@@ -25,6 +26,7 @@ func sync_health(new_hp: int):
 	current_health = new_hp
 
 @rpc("any_peer","call_local","reliable")
-func instantiate_vfx(vfx: String):
+func instantiate_vfx(vfx: String, anchor: String):
 	var vfx_scene: Vfx = vfx_library[vfx].instantiate()
-	add_child(vfx_scene)
+	var parent = get_node("Hitboxes/" + anchor)
+	parent.add_child(vfx_scene)

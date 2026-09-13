@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cou8gjiwsmdhf" path="res://Entities/PlayableCharacters/character_1/textures/l_eye.004_baseColor.png" id="5_1u41p"]
 [ext_resource type="Texture2D" uid="uid://1mw6byofbpsq" path="res://Entities/PlayableCharacters/character_1/textures/body_b_01.003_baseColor.png" id="6_72kfg"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6f7q"]
+size = Vector3(3.390625, 1.6918945, 2.7895508)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpja1"]
 resource_name = "body_a_01.003"
 cull_mode = 2
@@ -777,9 +780,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w6f7q"]
-size = Vector3(3.390625, 1.6918945, 2.7895508)
-
 [node name="Character1" unique_id=2141166769 instance=ExtResource("1_hfrbj")]
 script = ExtResource("2_mfn5y")
 stats = ExtResource("3_djnaa")
@@ -787,10 +787,16 @@ stats = ExtResource("3_djnaa")
 [node name="DEBUG_MODEL" parent="." index="3" unique_id=410065059]
 visible = false
 
-[node name="GLTF_created_0" type="Node3D" parent="." index="4" unique_id=58887912]
+[node name="MainAttack" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(1132151024) index="0" unique_id=1944062375]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainAttack" index="0" unique_id=1419600495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041930705, -1.4035645)
+shape = SubResource("BoxShape3D_w6f7q")
+
+[node name="GLTF_created_0" type="Node3D" parent="Model" parent_id_path=PackedInt32Array(1863975274) index="0" unique_id=58887912]
 transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, -0.97248954, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="GLTF_created_0" index="0" unique_id=2080519277]
+[node name="Skeleton3D" type="Skeleton3D" parent="Model/GLTF_created_0" index="0" unique_id=2080519277]
 bones/0/name = "GLTF_created_0_rootJoint"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1842,96 +1848,90 @@ bones/149/position = Vector3(0, 0, 0)
 bones/149/rotation = Quaternion(0, 0, 0, 1)
 bones/149/scale = Vector3(1, 1, 1)
 
-[node name="Object_7" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="0" unique_id=560178593]
+[node name="Object_7" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="0" unique_id=560178593]
 mesh = SubResource("ArrayMesh_rf63i")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_8" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="1" unique_id=1063044298]
+[node name="Object_8" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="1" unique_id=1063044298]
 mesh = SubResource("ArrayMesh_umv58")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_10" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="2" unique_id=1482775890]
+[node name="Object_10" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="2" unique_id=1482775890]
 mesh = SubResource("ArrayMesh_wqtg7")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_11" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="3" unique_id=1539283733]
+[node name="Object_11" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="3" unique_id=1539283733]
 mesh = SubResource("ArrayMesh_o1hhg")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_13" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="4" unique_id=2074359613]
+[node name="Object_13" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="4" unique_id=2074359613]
 mesh = SubResource("ArrayMesh_k5wyb")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_14" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="5" unique_id=711596851]
+[node name="Object_14" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="5" unique_id=711596851]
 mesh = SubResource("ArrayMesh_oxi8e")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_16" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="6" unique_id=1767528428]
+[node name="Object_16" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="6" unique_id=1767528428]
 mesh = SubResource("ArrayMesh_5j32f")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_17" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="7" unique_id=650109334]
+[node name="Object_17" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="7" unique_id=650109334]
 mesh = SubResource("ArrayMesh_qmksy")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_19" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="8" unique_id=649487372]
+[node name="Object_19" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="8" unique_id=649487372]
 mesh = SubResource("ArrayMesh_6ldn3")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_21" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="9" unique_id=1858543142]
+[node name="Object_21" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="9" unique_id=1858543142]
 mesh = SubResource("ArrayMesh_tchx8")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_23" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="10" unique_id=59334017]
+[node name="Object_23" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="10" unique_id=59334017]
 mesh = SubResource("ArrayMesh_guht1")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_25" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="11" unique_id=2025174229]
+[node name="Object_25" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="11" unique_id=2025174229]
 mesh = SubResource("ArrayMesh_qpept")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_27" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="12" unique_id=1555952811]
+[node name="Object_27" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="12" unique_id=1555952811]
 mesh = SubResource("ArrayMesh_qxavw")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="Object_28" type="MeshInstance3D" parent="GLTF_created_0/Skeleton3D" index="13" unique_id=1285964426]
+[node name="Object_28" type="MeshInstance3D" parent="Model/GLTF_created_0/Skeleton3D" index="13" unique_id=1285964426]
 mesh = SubResource("ArrayMesh_r6gph")
 skin = SubResource("Skin_dy3ss")
 skeleton = NodePath("..")
 
-[node name="pm1106_00_00_body_mesh_shape_151" type="Node3D" parent="GLTF_created_0" index="1" unique_id=1770210939]
+[node name="pm1106_00_00_body_mesh_shape_151" type="Node3D" parent="Model/GLTF_created_0" index="1" unique_id=1770210939]
 
-[node name="pm1106_00_00_eye_mesh_shape_152" type="Node3D" parent="GLTF_created_0" index="2" unique_id=1072989037]
+[node name="pm1106_00_00_eye_mesh_shape_152" type="Node3D" parent="Model/GLTF_created_0" index="2" unique_id=1072989037]
 
-[node name="pm1106_00_00_eye_mesh_shape_lod1_153" type="Node3D" parent="GLTF_created_0" index="3" unique_id=227753416]
+[node name="pm1106_00_00_eye_mesh_shape_lod1_153" type="Node3D" parent="Model/GLTF_created_0" index="3" unique_id=227753416]
 
-[node name="pm1106_00_00_eye_mesh_shape_lod2_154" type="Node3D" parent="GLTF_created_0" index="4" unique_id=350998392]
+[node name="pm1106_00_00_eye_mesh_shape_lod2_154" type="Node3D" parent="Model/GLTF_created_0" index="4" unique_id=350998392]
 
-[node name="pm1106_00_00_eyelash_mesh_shape_155" type="Node3D" parent="GLTF_created_0" index="5" unique_id=1272326974]
+[node name="pm1106_00_00_eyelash_mesh_shape_155" type="Node3D" parent="Model/GLTF_created_0" index="5" unique_id=1272326974]
 
-[node name="pm1106_00_00_eyelash_mesh_shape_lod1_156" type="Node3D" parent="GLTF_created_0" index="6" unique_id=1568740614]
+[node name="pm1106_00_00_eyelash_mesh_shape_lod1_156" type="Node3D" parent="Model/GLTF_created_0" index="6" unique_id=1568740614]
 
-[node name="pm1106_00_00_eyelash_mesh_shape_lod2_157" type="Node3D" parent="GLTF_created_0" index="7" unique_id=1662815507]
+[node name="pm1106_00_00_eyelash_mesh_shape_lod2_157" type="Node3D" parent="Model/GLTF_created_0" index="7" unique_id=1662815507]
 
-[node name="pm1106_00_00_hair_mesh_shape_158" type="Node3D" parent="GLTF_created_0" index="8" unique_id=1069088964]
+[node name="pm1106_00_00_hair_mesh_shape_158" type="Node3D" parent="Model/GLTF_created_0" index="8" unique_id=1069088964]
 
-[node name="pm1106_00_00_hammer_mesh_shape_159" type="Node3D" parent="GLTF_created_0" index="9" unique_id=2103104442]
-
-[node name="MainAttackHB" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(1132151024) index="0" unique_id=1944062375]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainAttackHB" index="0" unique_id=1419600495]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041930705, -1.4035645)
-shape = SubResource("BoxShape3D_w6f7q")
+[node name="pm1106_00_00_hammer_mesh_shape_159" type="Node3D" parent="Model/GLTF_created_0" index="9" unique_id=2103104442]

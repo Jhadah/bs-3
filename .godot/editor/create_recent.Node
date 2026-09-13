@@ -1,3 +1,11 @@
+VisibleOnScreenNotifier3D
+CanvasLayer
+Marker3D
+SubViewport
+Sprite3D
+ProgressBar
+Node3D
+SubViewportContainer
 Timer
 Node
 Vfx
@@ -5,11 +13,3 @@ AnimatedSprite3D
 StaticBody3D
 CollisionShape3D
 Area3D
-Node3D
-MeshInstance3D
-Camera3D
-DirectionalLight3D
-AreaLight3D
-OmniLight3D
-ColorRect
-TabContainer
