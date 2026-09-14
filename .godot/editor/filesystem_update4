@@ -5,3 +5,4 @@ res://Entities/PlayableCharacters/character_1/character_1.gd
 res://Entities/PlayableCharacters/character_1/character_1.tscn
 res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
 res://VFX/Entities/Characters/character1/slash_vfx.tscn
+res://Entities/Entity.gd

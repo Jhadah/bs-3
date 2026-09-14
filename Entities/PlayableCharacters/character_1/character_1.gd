@@ -3,8 +3,8 @@ extends PlayableCharacter
 @onready var main_attack_hb = $Hitboxes/MainAttack
 
 
-var main_attack_cast_time: float = 1
-var main_attack_self_slow: float = 40
+var main_attack_cast_time: float = 0.5
+var main_attack_self_slow: float = 40.0
 
 func _ready() -> void:
 	super._ready()

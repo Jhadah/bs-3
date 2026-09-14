@@ -1,6 +1,8 @@
 class_name Entity
 extends CharacterBody3D
 
+signal health_updated
+
 var entity_id: int
 
 @export var stats: EntityStats
@@ -23,10 +25,20 @@ func take_damage(amount: int):
 
 @rpc("any_peer","call_local","reliable")
 func sync_health(new_hp: int):
-	current_health = new_hp
+	current_health = clamp(new_hp, 0, stats.max_health)
+	health_updated.emit(current_health)
+	if current_health <= 0:
+		die()
 
 @rpc("any_peer","call_local","reliable")
 func instantiate_vfx(vfx: String, anchor: String):
 	var vfx_scene: Vfx = vfx_library[vfx].instantiate()
 	var parent = get_node("Hitboxes/" + anchor)
 	parent.add_child(vfx_scene)
+
+func die():
+	if self is PlayableCharacter:
+		visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+	else:  #per minion etc
+		queue_free()
