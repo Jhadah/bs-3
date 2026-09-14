@@ -780,6 +780,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_pqtca"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Character1" unique_id=2141166769 instance=ExtResource("1_hfrbj")]
 script = ExtResource("2_mfn5y")
 stats = ExtResource("3_djnaa")
@@ -1935,3 +1938,6 @@ skeleton = NodePath("..")
 [node name="pm1106_00_00_hair_mesh_shape_158" type="Node3D" parent="Model/GLTF_created_0" index="8" unique_id=1069088964]
 
 [node name="pm1106_00_00_hammer_mesh_shape_159" type="Node3D" parent="Model/GLTF_created_0" index="9" unique_id=2103104442]
+
+[node name="Sprite3D" parent="." index="6" unique_id=538005959]
+texture = SubResource("ViewportTexture_pqtca")

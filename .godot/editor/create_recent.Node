@@ -1,9 +1,10 @@
-VisibleOnScreenNotifier3D
+TextureProgressBar
+ProgressBar
 CanvasLayer
+VisibleOnScreenNotifier3D
 Marker3D
 SubViewport
 Sprite3D
-ProgressBar
 Node3D
 SubViewportContainer
 Timer
@@ -12,4 +13,3 @@ Vfx
 AnimatedSprite3D
 StaticBody3D
 CollisionShape3D
-Area3D

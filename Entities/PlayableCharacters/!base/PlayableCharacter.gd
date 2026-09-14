@@ -5,7 +5,7 @@ var peer_id: int = -1
 
 @onready var camera = $Camera3D
 
-var deliberate_rotation: bool = false
+var custom_rotation: bool = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -27,7 +27,7 @@ func handle_movement(delta: float):
 	var final_speed = stats.speed * (1.0 - clamp(slow_percentage, 0, 100) / 100)
 	velocity = dir * final_speed
 	
-	if dir != Vector3.ZERO and !deliberate_rotation:
+	if dir != Vector3.ZERO and !custom_rotation:
 		var target_rot: float = atan2(-dir.x, -dir.z)
 		rotation.y = lerp_angle(rotation.y, target_rot, delta * 10.0)
 	

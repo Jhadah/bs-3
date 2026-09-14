@@ -1,7 +1,7 @@
-res://Entities/PlayableCharacters/!base/playable_character.tscn
-res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
-res://UI_Elements/Health_Bars/health_bar.tscn
 res://UI_Elements/Health_Bars/health_bar.gd
-res://new_script.gd
-res://canvas_layer.gd
-res://Entities/PlayableCharacters/character_2/character_2.tscn
+res://Entities/PlayableCharacters/!base/playable_character.tscn
+res://UI_Elements/Health_Bars/health_bar.tscn
+res://Entities/PlayableCharacters/character_1/character_1.gd
+res://Entities/PlayableCharacters/character_1/character_1.tscn
+res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
+res://VFX/Entities/Characters/character1/slash_vfx.tscn

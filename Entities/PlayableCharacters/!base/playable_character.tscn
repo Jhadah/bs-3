@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqixgb5r3417x" path="res://Entities/PlayableCharacters/!base/PlayableCharacter.gd" id="1_m0uoq"]
 [ext_resource type="Script" uid="uid://ban6oma05x4yr" path="res://Entities/PlayableCharacters/!base/camera.gd" id="2_m0uoq"]
-[ext_resource type="Script" uid="uid://b74th72380akj" path="res://canvas_layer.gd" id="3_mjmvg"]
+[ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="3_mjmvg"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ul0ih"]
 properties/0/path = NodePath(".:position")
@@ -16,9 +16,6 @@ properties/1/replication_mode = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6f7q"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w6f7q"]
-viewport_path = NodePath("SubViewport")
-
 [node name="PlayableCharacter" type="CharacterBody3D" unique_id=2141166769 groups=["players"]]
 script = ExtResource("1_m0uoq")
 
@@ -29,7 +26,7 @@ replication_config = SubResource("SceneReplicationConfig_ul0ih")
 shape = SubResource("CylinderShape3D_ur7ma")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1109440232]
-transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, -1.9073486e-06, 16.394737, 8.282888)
+transform = Transform3D(1, 0, 0, 0, 0.38990098, 0.92085683, 0, -0.92085683, 0.38990098, 0.0649662, 16.394737, 6.869158)
 top_level = true
 size = 22.161
 script = ExtResource("2_m0uoq")
@@ -41,16 +38,4 @@ mesh = SubResource("CapsuleMesh_w6f7q")
 
 [node name="Model" type="Node3D" parent="." unique_id=1863975274]
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=538005959]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 3.7067294, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_w6f7q")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=365034253 node_paths=PackedStringArray("camera")]
-script = ExtResource("3_mjmvg")
-camera = NodePath("../Camera3D")
-
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=719360898]
-
-[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[node name="HealthBar" parent="." unique_id=233856957 instance=ExtResource("3_mjmvg")]

@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"default",
-"speed": 30.0
+"speed": 60.0
 }]
 
 [node name="SlashVFX" type="AnimatedSprite3D" unique_id=790995486]
