@@ -1,11 +1,16 @@
 class_name PlayableCharacter 
 extends Entity
 
+signal main_attack_cooldown_started_signal
+
+@export var cooldowns: CharacterCooldowns
+
 var peer_id: int = -1
 
 @onready var camera = $Camera3D
 
 var custom_rotation: bool = false
+var is_main_attack_on_cooldown: bool = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -41,6 +46,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func request_main_attack():
 	cast_main_attack.rpc_id(1)
 
-@rpc("any_peer","call_local", "reliable") #call local solo se l'host è un giocatore
 func cast_main_attack():
 	pass
+
+@rpc("any_peer","call_local","reliable")
+func main_attack_cooldown_started():
+	is_main_attack_on_cooldown = true
+	main_attack_cooldown_started_signal.emit()
+	await get_tree().create_timer(cooldowns.main_attack_cooldown).timeout
+	is_main_attack_on_cooldown = false

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqixgb5r3417x" path="res://Entities/PlayableCharacters/!base/PlayableCharacter.gd" id="1_m0uoq"]
 [ext_resource type="Script" uid="uid://ban6oma05x4yr" path="res://Entities/PlayableCharacters/!base/camera.gd" id="2_m0uoq"]
 [ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="3_mjmvg"]
+[ext_resource type="PackedScene" uid="uid://bx4hbgf2stl7l" path="res://UI_Elements/HUD/player_hud.tscn" id="4_5f6gd"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ul0ih"]
 properties/0/path = NodePath(".:position")
@@ -39,3 +40,5 @@ mesh = SubResource("CapsuleMesh_w6f7q")
 [node name="Model" type="Node3D" parent="." unique_id=1863975274]
 
 [node name="HealthBar" parent="." unique_id=233856957 instance=ExtResource("3_mjmvg")]
+
+[node name="PlayerHUD" parent="." unique_id=354633299 instance=ExtResource("4_5f6gd")]

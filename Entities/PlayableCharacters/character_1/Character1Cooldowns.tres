@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterCooldowns" format=3 uid="uid://dg0kqfosov6me"]
+
+[ext_resource type="Script" uid="uid://cj784tuiok0y3" path="res://Entities/PlayableCharacters/!base/CharacterCooldowns.gd" id="1_v1atd"]
+
+[resource]
+script = ExtResource("1_v1atd")
+main_attack_cooldown = 3.0
+metadata/_custom_type_script = "uid://cj784tuiok0y3"
