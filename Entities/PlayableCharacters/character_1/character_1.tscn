@@ -783,17 +783,17 @@ blend_shape_mode = 0
 
 [node name="Character1" unique_id=2141166769 instance=ExtResource("1_hfrbj")]
 script = ExtResource("2_mfn5y")
-main_attack_cast_time = 0.5
-main_attack_self_slow = 40.0
+main_spell_cast_time = 0.5
+main_spell_self_slow = 20.0
 cooldowns = ExtResource("3_1u41p")
 stats = ExtResource("3_djnaa")
 
 [node name="DEBUG_MODEL" parent="." index="3" unique_id=410065059]
 visible = false
 
-[node name="MainAttack" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(1132151024) index="0" unique_id=1944062375]
+[node name="MainSpell" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(1132151024) index="0" unique_id=1944062375]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainAttack" index="0" unique_id=1419600495]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpell" index="0" unique_id=1419600495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041930705, -1.4035645)
 shape = SubResource("BoxShape3D_w6f7q")
 

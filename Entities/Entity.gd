@@ -22,6 +22,12 @@ func take_damage(amount: int):
 		current_health -= amount
 		sync_health.rpc(current_health)
 		print(current_health)
+@rpc("any_peer","call_local","reliable")
+func heal(amount: int):
+	if multiplayer.is_server():
+		current_health += amount
+		sync_health.rpc(current_health)
+		print(current_health)
 
 @rpc("any_peer","call_local","reliable")
 func sync_health(new_hp: int):

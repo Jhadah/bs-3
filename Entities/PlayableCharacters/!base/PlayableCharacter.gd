@@ -1,16 +1,19 @@
 class_name PlayableCharacter 
 extends Entity
 
-signal main_attack_cooldown_started_signal
+signal spell_cooldown_started_signal(spell: String)
+
+var is_main_spell_on_cooldown: bool = false
+var is_secondary_spell_on_cooldown: bool = false
 
 @export var cooldowns: CharacterCooldowns
 
 var peer_id: int = -1
+var character_id: int = -1
 
 @onready var camera = $Camera3D
 
 var custom_rotation: bool = false
-var is_main_attack_on_cooldown: bool = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -41,17 +44,28 @@ func handle_movement(delta: float):
 func _unhandled_input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
 		if event.is_action_pressed("L-click"):
-			request_main_attack()
+			request_spell(cast_main_spell)
+		if event.is_action_pressed("shift"):
+			request_spell(cast_secondary_spell)
 
-func request_main_attack():
-	cast_main_attack.rpc_id(1)
+func request_spell(spell_method: Callable):
+	spell_method.rpc()
 
-func cast_main_attack():
+func cast_main_spell():
+	pass
+func cast_secondary_spell():
 	pass
 
 @rpc("any_peer","call_local","reliable")
-func main_attack_cooldown_started():
-	is_main_attack_on_cooldown = true
-	main_attack_cooldown_started_signal.emit()
-	await get_tree().create_timer(cooldowns.main_attack_cooldown).timeout
-	is_main_attack_on_cooldown = false
+func spell_cooldown_start(spell: String):
+	match spell:
+		"main":
+			is_main_spell_on_cooldown = true
+			spell_cooldown_started_signal.emit("main")
+			await get_tree().create_timer(cooldowns.main_spell_cooldown).timeout
+			is_main_spell_on_cooldown = false
+		"secondary":
+			is_secondary_spell_on_cooldown = true
+			spell_cooldown_started_signal.emit("secondary")
+			await get_tree().create_timer(cooldowns.secondary_spell_cooldown).timeout
+			is_secondary_spell_on_cooldown = false

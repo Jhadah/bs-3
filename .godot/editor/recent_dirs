@@ -1,3 +1,4 @@
+res://Entities/PlayableCharacters/
 res://Entities/PlayableCharacters/character_1/
 res://UI_Elements/HUD/
 res://UI_Elements/Health_Bars/
@@ -8,4 +9,3 @@ res://Entities/PlayableCharacters/character_2/
 res://World/
 res://UI_Elements/
 res://Multiplayer/
-res://Entities/PlayableCharacters/

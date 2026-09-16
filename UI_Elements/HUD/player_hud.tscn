@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bjumv4ufbd0fs" path="res://UI_Elements/HUD/player_hud.gd" id="1_5rq4c"]
 [ext_resource type="Texture2D" uid="uid://jflyimfbe7va" path="res://UI_Elements/HUD/hud.png" id="2_gym37"]
+[ext_resource type="Texture2D" uid="uid://4d8v7popyr70" path="res://Entities/PlayableCharacters/character_1/art/hammer_guy_main_attack_icon.png" id="3_p5s83"]
+[ext_resource type="Texture2D" uid="uid://dpxhxocvw8ch7" path="res://Entities/PlayableCharacters/character_1/art/hammer_guy_secondary_attack_icon.png" id="4_eqfvv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv5vm"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r353i"]
 bg_color = Color(0, 0.7490196, 0, 1)
+
+[sub_resource type="Theme" id="Theme_w6f7q"]
 
 [node name="PlayerHUD" type="Control" unique_id=354633299]
 layout_mode = 3
@@ -39,12 +43,63 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_r353i")
 value = 50.0
 show_percentage = false
 
-[node name="MainAttackCooldown" type="Label" parent="." unique_id=801166299]
+[node name="HealthBarLabel" type="Label" parent="HealthBar" unique_id=1205290677]
+layout_mode = 0
+offset_left = 105.5
+offset_right = 144.5
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 10
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainSpell" type="Control" parent="." unique_id=2089987250]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainSpellIcon" type="TextureRect" parent="MainSpell" unique_id=557494108]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 519.0
+offset_right = 524.0
+offset_bottom = 561.0
+theme = SubResource("Theme_w6f7q")
+texture = ExtResource("3_p5s83")
+expand_mode = 2
+
+[node name="MainSpellCooldown" type="Label" parent="MainSpell" unique_id=801166299]
 visible = false
 layout_mode = 0
 offset_left = 482.0
 offset_top = 519.0
 offset_right = 524.0
+offset_bottom = 561.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondarySpell" type="Control" parent="." unique_id=1314264989]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SecondarySpellIcon" type="TextureRect" parent="SecondarySpell" unique_id=1139677561]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 519.0
+offset_right = 606.0
+offset_bottom = 561.0
+theme = SubResource("Theme_w6f7q")
+texture = ExtResource("4_eqfvv")
+expand_mode = 2
+
+[node name="SecondarySpellCooldown" type="Label" parent="SecondarySpell" unique_id=1625097084]
+visible = false
+layout_mode = 0
+offset_left = 564.0
+offset_top = 519.0
+offset_right = 606.0
 offset_bottom = 561.0
 text = "0"
 horizontal_alignment = 1

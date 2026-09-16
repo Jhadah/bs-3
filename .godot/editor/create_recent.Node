@@ -1,5 +1,6 @@
-TextureRect
 Label
+Control
+TextureRect
 ProgressBar
 Timer
 Node
@@ -11,5 +12,3 @@ SubViewport
 Sprite3D
 Node3D
 SubViewportContainer
-Vfx
-AnimatedSprite3D

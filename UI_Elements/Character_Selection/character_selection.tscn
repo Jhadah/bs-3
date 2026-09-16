@@ -23,6 +23,9 @@ offset_left = 314.0
 offset_top = 100.0
 offset_right = 901.0
 offset_bottom = 495.0
+max_columns = 5
+icon_mode = 0
+fixed_icon_size = Vector2i(100, 100)
 
 [node name="SelectButton" type="Button" parent="." unique_id=352739556]
 layout_mode = 0

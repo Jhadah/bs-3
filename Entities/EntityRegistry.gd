@@ -19,6 +19,6 @@ func register(entity: Entity, peer_id: int):
 
 func get_entity(entity_id: int):
 	return registry.get(entity_id)
-									   #non ho capito
+	#non ho capito
 func get_entity_id_for_peer_id(peer_id: int):
 	return peer_to_entity.get(peer_id, -1)

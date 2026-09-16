@@ -1,10 +1,10 @@
 extends Control
 
-@onready var item_list = $ItemList
+@onready var item_list: ItemList = $ItemList
 
 func _ready() -> void:
 	for character in Roster.characters:
-		item_list.add_item(character.name)
+		item_list.add_item(character.name, character.icon)
 
 func _on_select_button_pressed() -> void:
 	var selected_character_id = item_list.get_selected_items()[0]

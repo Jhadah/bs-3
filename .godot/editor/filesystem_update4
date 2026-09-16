@@ -1,4 +1,4 @@
-res://Entities/PlayableCharacters/character_1/character_1.gd
-res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
 res://UI_Elements/HUD/player_hud.tscn
 res://UI_Elements/HUD/player_hud.gd
+res://Entities/PlayableCharacters/character_2/character_2.tscn
+res://Entities/PlayableCharacters/Roster.gd
