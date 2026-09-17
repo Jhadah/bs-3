@@ -12,6 +12,7 @@ var vfx_library: Dictionary = {}
 var dir: Vector3
 var current_health: int
 var slow_percentage: float = 0.0
+var speed_buff_percentage: float = 0.0
 
 func _ready() -> void:
 	current_health = stats.max_health
@@ -41,6 +42,7 @@ func instantiate_vfx(vfx: String, anchor: String):
 	var vfx_scene: Vfx = vfx_library[vfx].instantiate()
 	var parent = get_node("Hitboxes/" + anchor)
 	parent.add_child(vfx_scene)
+	return vfx_scene
 
 func die():
 	if self is PlayableCharacter:

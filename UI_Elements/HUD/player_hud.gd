@@ -8,18 +8,24 @@ extends Control
 @onready var main_spell_icon: TextureRect = $MainSpell/MainSpellIcon
 @onready var secondary_spell_label: Label = $SecondarySpell/SecondarySpellCooldown
 @onready var secondary_spell_icon: TextureRect = $SecondarySpell/SecondarySpellIcon
+@onready var main_spell_recast: TextureProgressBar = $MainSpell/MainSpellRecast
+@onready var secondary_spell_recast: TextureProgressBar = $MainSpell/MainSpellRecast
 
 func _ready() -> void:
 	if !is_multiplayer_authority():
 		visible = false
+	
 	parent.health_updated.connect(_on_health_updated)
 	parent.spell_cooldown_started_signal.connect(_on_spell_cooldown_started)
+	parent.recast_window_started_signal.connect(_on_recast_window_start)
+	parent.recasts_endend_signal.connect(_on_recasts_endend)
 	
 	await get_tree().process_frame
 	
 	var roster = get_node("/root/Roster")
 	main_spell_icon.texture = roster.characters[parent.character_id]["main_spell_icon"]
 	secondary_spell_icon.texture = roster.characters[parent.character_id]["secondary_spell_icon"]
+	health_bar.max_value = parent.stats.max_health
 	
 	_on_health_updated(parent.current_health)
 
@@ -50,8 +56,27 @@ func _on_spell_cooldown_started(spell: String):
 func update_icon_in_cooldown(value: float, label: Label, icon: TextureRect):
 	label.text = str(snappedf(value, 0.1))
 	icon.self_modulate = Color(0.1,0.1,0.1)
-
+	
 	if label.text == "0.0":
 		label.visible = false
 		icon.self_modulate = Color(1,1,1)
-	
+
+func recast_start(recast_anim: TextureProgressBar, duration: float):
+	recast_anim.visible = true
+	var tween = create_tween()
+	tween.tween_property(recast_anim, "value", 0, duration).from(100)
+
+func _on_recast_window_start(spell: String, duration: float):
+	match spell:
+		"main":
+			recast_start(main_spell_recast, duration)
+		"secondary":
+			recast_start(secondary_spell_recast, duration)
+
+func _on_recasts_endend(spell: String):
+	match spell:
+		"main":
+			main_spell_recast.visible = false
+		"secondary":
+			secondary_spell_recast.visible = false
+			

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c8ub5ivyn07vp"]
+
+[ext_resource type="Texture2D" uid="uid://r4ckxy5v13v5" path="res://VFX/Entities/Characters/character2/main_attack_vfx.png" id="1_n01f7"]
+[ext_resource type="Script" uid="uid://4ks2te6iy2fq" path="res://VFX/Vfx.gd" id="2_igpw0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6f7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n01f7")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="GutsMainSlash" type="AnimatedSprite3D" unique_id=501631870]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 0.5524572, -1.5062413)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_w6f7q")
+script = ExtResource("2_igpw0")
+metadata/_custom_type_script = "uid://4ks2te6iy2fq"

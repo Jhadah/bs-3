@@ -3,7 +3,7 @@ extends PlayableCharacter
 @onready var main_spell_hb = $Hitboxes/MainSpell
 
 @export var main_spell_cast_time: float = 0
-@export var main_spell_self_slow: float = 40.0
+@export var main_spell_self_slow: float = 0
 
 func _ready() -> void:
 	super._ready()
@@ -27,7 +27,7 @@ func cast_main_spell():
 		look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
 		main_spell_hb.look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
 	
-	spell_cooldown_start.rpc("main")
+	spell_cooldown_start.rpc("main")                                            #COOLDOWN
 	await get_tree().create_timer(main_spell_cast_time).timeout
 	
 	instantiate_vfx.rpc("main_spell", "MainSpell")                              #VFX
@@ -60,7 +60,7 @@ func cast_main_spell():
 func cast_secondary_spell():
 	if is_secondary_spell_on_cooldown: return
 	
-	spell_cooldown_start.rpc("secondary")
+	spell_cooldown_start.rpc("secondary")                                       #COOLDOWN
 	
 	#--- ⌄ server side ⌄ ---#
 	if multiplayer.is_server():

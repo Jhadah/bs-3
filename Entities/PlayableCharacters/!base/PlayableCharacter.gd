@@ -2,6 +2,8 @@ class_name PlayableCharacter
 extends Entity
 
 signal spell_cooldown_started_signal(spell: String)
+signal recast_window_started_signal(spell: String, duration)
+signal recasts_endend_signal(spell: String)
 
 var is_main_spell_on_cooldown: bool = false
 var is_secondary_spell_on_cooldown: bool = false
@@ -32,12 +34,15 @@ func handle_movement(delta: float):
 	var input = Input.get_vector("a", "d", "w", "s")
 	dir = Vector3(input.x, 0, input.y)
 	
-	var final_speed = stats.speed * (1.0 - clamp(slow_percentage, 0, 100) / 100)
+	var buff_factor: float = max(0.0, speed_buff_percentage) / 100
+	var slow_factor: float = clamp(slow_percentage, 0, 100) / 100
+	
+	var final_speed = stats.speed * (1 + buff_factor - slow_factor)
 	velocity = dir * final_speed
 	
 	if dir != Vector3.ZERO and !custom_rotation:
 		var target_rot: float = atan2(-dir.x, -dir.z)
-		rotation.y = lerp_angle(rotation.y, target_rot, delta * 10.0)
+		rotation.y = lerp_angle(rotation.y, target_rot, delta * 7.0)
 	
 	move_and_slide()
 
@@ -47,6 +52,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			request_spell(cast_main_spell)
 		if event.is_action_pressed("shift"):
 			request_spell(cast_secondary_spell)
+
+func damage_area(area: Area3D, amount: float):
+	var targets: Array = area.get_overlapping_bodies()
+	for target in targets:
+		if target.has_method("take_damage") and target != self:
+			target.take_damage.rpc(amount)
 
 func request_spell(spell_method: Callable):
 	spell_method.rpc()

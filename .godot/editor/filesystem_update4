@@ -1,4 +1,11 @@
-res://UI_Elements/HUD/player_hud.tscn
-res://UI_Elements/HUD/player_hud.gd
+res://Entities/PlayableCharacters/character_2/character_2.gd
+res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
+res://Entities/PlayableCharacters/character_1/character_1.tscn
 res://Entities/PlayableCharacters/character_2/character_2.tscn
-res://Entities/PlayableCharacters/Roster.gd
+res://Entities/PlayableCharacters/character_1/character_1.gd
+res://Entities/PlayableCharacters/character_2/Character2Stats.tres
+res://UI_Elements/HUD/player_hud.gd
+res://Entities/PlayableCharacters/character_2/Character2Cooldowns.tres
+res://Entities/Entity.gd
+res://UI_Elements/HUD/player_hud.tscn
+res://VFX/Entities/Characters/character2/guts_main_slash.tscn
