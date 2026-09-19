@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dvm4seoaor7hj"]
+
+[ext_resource type="Script" uid="uid://cwqgaekq6v4ec" path="res://Structures/Structure.gd" id="1_r2lf2"]
+
+[node name="Structure" type="StaticBody3D" unique_id=1283043747]
+script = ExtResource("1_r2lf2")
+metadata/_custom_type_script = "uid://cwqgaekq6v4ec"
+
+[node name="Model" type="Node3D" parent="." unique_id=2076658730]
+
+[node name="Hitbox" type="Node3D" parent="." unique_id=1931864183]

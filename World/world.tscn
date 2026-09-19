@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqud6pewgek6s" path="res://UI_Elements/Start_Menu/start_menu.tscn" id="2_j8job"]
 [ext_resource type="PackedScene" uid="uid://cpp5ux1eua8ua" path="res://UI_Elements/Character_Selection/character_selection.tscn" id="3_3f78f"]
 [ext_resource type="Texture2D" uid="uid://dba0hlbaxkxtc" path="res://World/39f1ee105d3c2347fee07f6cb078c2f0.jpg" id="4_3f78f"]
+[ext_resource type="PackedScene" uid="uid://cc2c3m01x6nbj" path="res://Structures/resource_spawner/resource_spawner.tscn" id="4_k8do8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w6f7q"]
 
@@ -46,3 +47,6 @@ offset_bottom = -31.0
 [node name="StartMenu" parent="UI_Overlays" unique_id=145739189 groups=["ui_panels"] instance=ExtResource("2_j8job")]
 z_index = 2
 offset_top = 31.0
+
+[node name="ResourceSpawner" parent="." unique_id=1283043747 instance=ExtResource("4_k8do8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1746874, 2.4138598, -23.14212)

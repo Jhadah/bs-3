@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StructureStats" format=3 uid="uid://csfd3brr0so4g"]
+
+[ext_resource type="Script" uid="uid://oi1hmp3nu6ua" path="res://Structures/StructureStats.gd" id="1_y3qc5"]
+
+[resource]
+script = ExtResource("1_y3qc5")
+max_health = 200.0
+metadata/_custom_type_script = "uid://oi1hmp3nu6ua"

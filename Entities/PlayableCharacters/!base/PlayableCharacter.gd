@@ -35,7 +35,7 @@ func handle_movement(delta: float):
 	dir = Vector3(input.x, 0, input.y)
 	
 	var buff_factor: float = max(0.0, speed_buff_percentage) / 100
-	var slow_factor: float = clamp(slow_percentage, 0, 100) / 100
+	var slow_factor: float = clamp(slow_percentage, 0, 99) / 100
 	
 	var final_speed = stats.speed * (1 + buff_factor - slow_factor)
 	velocity = dir * final_speed

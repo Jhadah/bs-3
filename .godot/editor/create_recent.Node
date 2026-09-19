@@ -1,8 +1,10 @@
+CollisionShape3D
+Node3D
+Structure
 Vfx
 Sprite3D
 TextureProgressBar
 ProgressBar
-CollisionShape3D
 Area3D
 Timer
 Label
@@ -10,6 +12,3 @@ Control
 TextureRect
 Node
 CanvasLayer
-VisibleOnScreenNotifier3D
-Marker3D
-SubViewport

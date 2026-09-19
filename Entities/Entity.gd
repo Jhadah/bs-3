@@ -16,6 +16,7 @@ var speed_buff_percentage: float = 0.0
 
 func _ready() -> void:
 	current_health = stats.max_health
+	health_updated.emit(current_health)
 
 @rpc("any_peer","call_local","reliable")
 func take_damage(amount: int):

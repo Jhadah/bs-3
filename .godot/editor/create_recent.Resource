@@ -1,2 +1,3 @@
+StructureStats
 CharacterCooldowns
 EntityStats
