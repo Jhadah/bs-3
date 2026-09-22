@@ -20,7 +20,7 @@ func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
 	custom_rotation = true                                                      #SELF EFFECTS APPLIED
-	slow_percentage += main_spell_self_slow
+	movement.slow_factor += main_spell_self_slow
 	
 	var mouse_pos = MouseManager.get_cursor_position_3d()                       #ROTAZIONE MOUSE
 	if mouse_pos:
@@ -30,7 +30,7 @@ func cast_main_spell():
 	spell_cooldown_start.rpc("main")                                            #COOLDOWN
 	await get_tree().create_timer(main_spell_cast_time).timeout
 	
-	instantiate_vfx.rpc("main_spell", "MainSpell")                              #VFX
+	instantiate_vfx.rpc("main_spell", "Hitboxes/MainSpell")                     #VFX
 	var vfx_anchor = main_spell_hb
 	if vfx_anchor.get_child_count() > 0:
 		var vfx_instance: Vfx = vfx_anchor.get_child(vfx_anchor.get_child_count() - 1)
@@ -39,21 +39,15 @@ func cast_main_spell():
 	
 	#--- ⌄ server side ⌄ ---#
 	if multiplayer.is_server():
-		var sender_id = multiplayer.get_remote_sender_id()                      #CASTER
-		var caster: PlayableCharacter
-		var caster_id = EntityRegistry.get_entity_id_for_peer_id(sender_id)
-		if sender_id == 0:
-			caster = self
-		else:
-			caster = EntityRegistry.get_entity(caster_id)
-		var caster_stats: EntityStats = caster.stats
+		
+		var caster = get_player_from_sender_id(multiplayer.get_remote_sender_id())
 		
 		var targets: Array = main_spell_hb.get_overlapping_bodies()             #TARGETING
 		for target in targets:
 			if target.has_method("take_damage") and target != self:
-				target.take_damage.rpc(caster_stats.attack_damage)
+				target.take_damage.rpc(caster.attack.attack_damage)
 	
-	slow_percentage -= main_spell_self_slow                                     #SELF EFFECTS REMOVED
+	movement.slow_factor -= main_spell_self_slow                                #SELF EFFECTS REMOVED
 	custom_rotation = false
 
 @rpc("any_peer","call_local", "reliable")
@@ -64,13 +58,6 @@ func cast_secondary_spell():
 	
 	#--- ⌄ server side ⌄ ---#
 	if multiplayer.is_server():
-		var sender_id = multiplayer.get_remote_sender_id()                      #CASTER
-		var caster: PlayableCharacter
-		var caster_id = EntityRegistry.get_entity_id_for_peer_id(sender_id)
-		if sender_id == 0:
-			caster = self
-		else:
-			caster = EntityRegistry.get_entity(caster_id)
-		var caster_stats: EntityStats = caster.stats
+		var caster = get_player_from_sender_id(multiplayer.get_remote_sender_id())
 		
-		caster.heal.rpc(caster_stats.max_health * 0.1)
+		caster.heal.rpc(caster.health.max_health * 0.1)

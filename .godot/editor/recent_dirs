@@ -1,12 +1,14 @@
+res://Components/
+res://Entities/PlayableCharacters/!base/
+res://Entities/PlayableCharacters/character_2/
+res://Entities/PlayableCharacters/character_1/
+res://Entities/
 res://Structures/resource_spawner/
 res://Structures/
-res://Entities/PlayableCharacters/character_2/
 res://Entities/PlayableCharacters/
-res://Entities/PlayableCharacters/character_1/
 res://UI_Elements/HUD/
 res://UI_Elements/Health_Bars/
 res://
-res://Entities/
 res://World/
 res://UI_Elements/
 res://Multiplayer/

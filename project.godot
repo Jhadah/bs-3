@@ -22,6 +22,10 @@ MouseManager="*uid://c1o1i00hstk6x"
 EntityRegistry="*uid://cv1pm6h7y6c7r"
 Roster="*uid://dy0v8yyj22jvc"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/stretch/mode="canvas_items"

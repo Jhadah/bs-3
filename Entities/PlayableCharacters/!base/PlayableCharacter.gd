@@ -8,11 +8,11 @@ signal recasts_endend_signal(spell: String)
 var is_main_spell_on_cooldown: bool = false
 var is_secondary_spell_on_cooldown: bool = false
 
-@export var cooldowns: CharacterCooldowns
 
 var peer_id: int = -1
 var character_id: int = -1
 
+@export var cooldowns: CharacterCooldowns
 @onready var camera = $Camera3D
 
 var custom_rotation: bool = false
@@ -21,7 +21,6 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _ready() -> void:
-	super._ready()
 	
 	if is_multiplayer_authority():
 		camera.make_current()
@@ -34,11 +33,7 @@ func handle_movement(delta: float):
 	var input = Input.get_vector("a", "d", "w", "s")
 	dir = Vector3(input.x, 0, input.y)
 	
-	var buff_factor: float = max(0.0, speed_buff_percentage) / 100
-	var slow_factor: float = clamp(slow_percentage, 0, 99) / 100
-	
-	var final_speed = stats.speed * (1 + buff_factor - slow_factor)
-	velocity = dir * final_speed
+	velocity = dir * movement.actual_speed
 	
 	if dir != Vector3.ZERO and !custom_rotation:
 		var target_rot: float = atan2(-dir.x, -dir.z)
@@ -80,3 +75,13 @@ func spell_cooldown_start(spell: String):
 			spell_cooldown_started_signal.emit("secondary")
 			await get_tree().create_timer(cooldowns.secondary_spell_cooldown).timeout
 			is_secondary_spell_on_cooldown = false
+
+func get_player_from_sender_id(sender_id: int) -> PlayableCharacter:
+	var caster: PlayableCharacter
+	var caster_id = EntityRegistry.get_entity_id_for_peer_id(sender_id)
+	if sender_id == 0:
+		caster = self
+	else:
+		caster = EntityRegistry.get_entity(caster_id)
+		
+	return caster

@@ -15,7 +15,9 @@ func _ready() -> void:
 	if !is_multiplayer_authority():
 		visible = false
 	
-	parent.health_updated.connect(_on_health_updated)
+	await parent.ready
+	
+	parent.health.health_updated.connect(_on_health_updated)
 	parent.spell_cooldown_started_signal.connect(_on_spell_cooldown_started)
 	parent.recast_window_started_signal.connect(_on_recast_window_start)
 	parent.recasts_endend_signal.connect(_on_recasts_endend)
@@ -25,13 +27,13 @@ func _ready() -> void:
 	var roster = get_node("/root/Roster")
 	main_spell_icon.texture = roster.characters[parent.character_id]["main_spell_icon"]
 	secondary_spell_icon.texture = roster.characters[parent.character_id]["secondary_spell_icon"]
-	health_bar.max_value = parent.stats.max_health
+	health_bar.max_value = parent.health.max_health
 	
-	_on_health_updated(parent.current_health)
+	_on_health_updated(parent.health.current_health)
 
 func _on_health_updated(new_amount: float):
 	health_bar.value = new_amount
-	health_bar_label.text = str((new_amount), "/", parent.stats.max_health)
+	health_bar_label.text = str((new_amount), "/", parent.health.max_health)
 
 func _on_spell_cooldown_started(spell: String):
 	var label: Label

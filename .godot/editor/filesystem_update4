@@ -1,11 +1,8 @@
+res://Entities/PlayableCharacters/!base/PlayableCharacter.tscn
+res://UI_Elements/HUD/player_hud.gd
+res://Entities/PlayableCharacters/character_1/character_1.tscn
+res://Entities/PlayableCharacters/character_1/character_1.gd
 res://Entities/PlayableCharacters/character_2/character_2.tscn
 res://Entities/PlayableCharacters/character_2/character_2.gd
-res://Entities/PlayableCharacters/!base/PlayableCharacter.gd
-res://World/world.tscn
-res://CLAUDE.md
-res://Structures/Structure.gd
+res://Structures/structure.tscn
 res://Structures/resource_spawner/resource_spawner.tscn
-res://UI_Elements/Health_Bars/health_bar.gd
-res://Structures/StructureStats.gd
-res://Structures/resource_spawner/ResourceSpawnerStats.tres
-res://Entities/Entity.gd

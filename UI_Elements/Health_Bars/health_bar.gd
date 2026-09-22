@@ -4,8 +4,9 @@ extends Control
 @onready var health_bar = $TextureProgressBar
 
 func _ready() -> void:
-	parent.health_updated.connect(_on_health_updated)
-	health_bar.max_value = parent.stats.max_health
+	await owner.ready
+	parent.health.health_updated.connect(_on_health_updated)
+	health_bar.max_value = parent.health.max_health
 	
 func _process(_delta: float) -> void:
 	var current_camera = get_viewport().get_camera_3d()
