@@ -47,8 +47,8 @@ func cast_main_spell():
 			elif current_cast == 2:
 				print("terzo cast")
 				execute_main_spell_cast(caster, 0, true)
-	await get_tree().create_timer(main_spell_cast_time).timeout
 	
+	await get_tree().create_timer(main_spell_cast_time).timeout
 	movement.custom_rotation = false                                                     #SELF EFFECTS REMOVED
 	movement.slow_factor -= main_spell_self_slow
 

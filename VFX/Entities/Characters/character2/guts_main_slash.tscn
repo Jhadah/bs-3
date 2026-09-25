@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [node name="GutsMainSlash" type="AnimatedSprite3D" unique_id=501631870]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 0.5524572, -1.5062413)
+transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 1.433187, 0.552457, 0.018279433)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_w6f7q")
 script = ExtResource("2_igpw0")

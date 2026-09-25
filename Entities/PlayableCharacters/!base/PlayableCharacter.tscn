@@ -37,6 +37,7 @@ replication_config = SubResource("SceneReplicationConfig_gnyp4")
 [node name="Hitboxes" type="Node3D" parent="." index="7" unique_id=49337274]
 
 [node name="DEBUG MODEL" type="MeshInstance3D" parent="." index="8" unique_id=673551957]
+visible = false
 mesh = SubResource("CapsuleMesh_w6f7q")
 
 [node name="PlayerHUD" parent="." index="9" unique_id=354633299 instance=ExtResource("4_gp50t")]

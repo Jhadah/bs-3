@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_bf08j")
-main_spell_cooldown = 3.0
+main_spell_cooldown = 1.0
 secondary_spell_cooldown = 5.0
 metadata/_custom_type_script = "uid://cj784tuiok0y3"
