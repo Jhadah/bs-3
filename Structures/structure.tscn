@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dvm4seoaor7hj"]
 
 [ext_resource type="Script" uid="uid://cwqgaekq6v4ec" path="res://Structures/Structure.gd" id="1_r2lf2"]
-[ext_resource type="PackedScene" uid="uid://52feoyy7gf8i" path="res://Components/HealthComponent.tscn" id="3_6lh0i"]
+[ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="2_vp6vb"]
+[ext_resource type="PackedScene" uid="uid://52feoyy7gf8i" path="res://Components/HealthComponent/HealthComponent.tscn" id="3_6lh0i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6f7q"]
 
 [node name="Structure" type="StaticBody3D" unique_id=1283043747]
 script = ExtResource("1_r2lf2")
 metadata/_custom_type_script = "uid://cwqgaekq6v4ec"
+
+[node name="HealthBar" parent="." unique_id=233856957 instance=ExtResource("2_vp6vb")]
 
 [node name="Model" type="Node3D" parent="." unique_id=2076658730]
 

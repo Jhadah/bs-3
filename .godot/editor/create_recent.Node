@@ -1,7 +1,8 @@
+ProgressBar
+Node
 MeshInstance3D
 Timer
 CollisionShape3D
-Node
 Area3D
 Node3D
 MultiplayerSynchronizer
@@ -11,4 +12,3 @@ Structure
 Vfx
 Sprite3D
 TextureProgressBar
-ProgressBar

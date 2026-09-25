@@ -4,7 +4,7 @@ extends PlayableCharacter
 @onready var main_spell_emp_hb = $Hitboxes/MainSpellEmp
 @onready var main_spell_recast_timer: Timer = $MainSpellRecastWindow
 
-@export var main_spell_cast_time: float = 0
+@export var main_spell_cast_time: float
 var current_cast: int = 0
 
 @export var main_spell_self_slow: float
@@ -24,7 +24,7 @@ func _ready() -> void:
 func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
-	custom_rotation = true
+	movement.custom_rotation = true
 	movement.slow_factor += main_spell_self_slow                                #SELF EFFECTS APPLIED
 	
 	var mouse_pos = MouseManager.get_cursor_position_3d()                       #ROTAZIONE MOUSE
@@ -49,7 +49,7 @@ func cast_main_spell():
 				execute_main_spell_cast(caster, 0, true)
 	await get_tree().create_timer(main_spell_cast_time).timeout
 	
-	custom_rotation = false                                                     #SELF EFFECTS REMOVED
+	movement.custom_rotation = false                                                     #SELF EFFECTS REMOVED
 	movement.slow_factor -= main_spell_self_slow
 
 func execute_main_spell_cast(caster:PlayableCharacter, sprite_rotation: float, is_emp: bool = false):

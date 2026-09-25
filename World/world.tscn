@@ -49,4 +49,4 @@ z_index = 2
 offset_top = 31.0
 
 [node name="ResourceSpawner" parent="." unique_id=1283043747 instance=ExtResource("4_k8do8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1746874, 2.4138598, -23.14212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.580627, 2.9575806, 0)

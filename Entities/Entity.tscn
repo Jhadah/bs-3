@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bevkb15x810t4"]
 
 [ext_resource type="Script" uid="uid://dqu20jk2bdx7o" path="res://Entities/Entity.gd" id="1_8xvi6"]
-[ext_resource type="PackedScene" uid="uid://52feoyy7gf8i" path="res://Components/HealthComponent.tscn" id="1_y048k"]
-[ext_resource type="PackedScene" uid="uid://c83m7eo64dcou" path="res://Components/MovementComponent.tscn" id="2_8xvi6"]
-[ext_resource type="PackedScene" uid="uid://b4dy5lmi2rpo8" path="res://Components/AttackComponent.tscn" id="4_on4x7"]
+[ext_resource type="PackedScene" uid="uid://52feoyy7gf8i" path="res://Components/HealthComponent/HealthComponent.tscn" id="1_y048k"]
+[ext_resource type="PackedScene" uid="uid://c83m7eo64dcou" path="res://Components/MovementComponent/MovementComponent.tscn" id="2_8xvi6"]
+[ext_resource type="PackedScene" uid="uid://b4dy5lmi2rpo8" path="res://Components/AttackComponent/AttackComponent.tscn" id="4_on4x7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndf0d"]
 

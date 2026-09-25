@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cqixgb5r3417x" path="res://Entities/PlayableCharacters/!base/PlayableCharacter.gd" id="2_3cowm"]
 [ext_resource type="Script" uid="uid://ban6oma05x4yr" path="res://Entities/PlayableCharacters/!base/camera.gd" id="3_4axk5"]
 [ext_resource type="PackedScene" uid="uid://bx4hbgf2stl7l" path="res://UI_Elements/HUD/player_hud.tscn" id="4_gp50t"]
+[ext_resource type="PackedScene" uid="uid://bpjoyvpry6vaf" path="res://Components/ManaComponent/ManaComponent.tscn" id="5_mc71s"]
+[ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="6_x0ova"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y048k"]
 
@@ -38,3 +40,7 @@ replication_config = SubResource("SceneReplicationConfig_gnyp4")
 mesh = SubResource("CapsuleMesh_w6f7q")
 
 [node name="PlayerHUD" parent="." index="9" unique_id=354633299 instance=ExtResource("4_gp50t")]
+
+[node name="ManaComponent" parent="." index="10" unique_id=1469532642 instance=ExtResource("5_mc71s")]
+
+[node name="HealthBar" parent="." index="11" unique_id=233856957 instance=ExtResource("6_x0ova")]

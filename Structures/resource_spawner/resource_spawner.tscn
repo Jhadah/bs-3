@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cc2c3m01x6nbj"]
 
 [ext_resource type="PackedScene" uid="uid://dvm4seoaor7hj" path="res://Structures/structure.tscn" id="1_456bh"]
-[ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="2_m6cvl"]
 [ext_resource type="Script" uid="uid://d3q6x50kvw4po" path="res://Structures/resource_spawner/resource_spawner.gd" id="2_uofq8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x44u0"]
@@ -107,8 +106,6 @@ size = Vector3(5.060547, 4.352051, 5.0146484)
 
 [node name="ResourceSpawner" unique_id=1283043747 instance=ExtResource("1_456bh")]
 script = ExtResource("2_uofq8")
-
-[node name="HealthBar" parent="." index="0" unique_id=233856957 instance=ExtResource("2_m6cvl")]
 
 [node name="resource_spawner" type="Node3D" parent="Model" parent_id_path=PackedInt32Array(2076658730) index="0" unique_id=540957463]
 

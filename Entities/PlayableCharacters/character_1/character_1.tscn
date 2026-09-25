@@ -19,6 +19,8 @@ size = Vector3(4.001343, 1, 5.211914)
 script = ExtResource("2_mfn5y")
 main_spell_cast_time = 0.4
 main_spell_self_slow = 0.2
+secondary_spell_self_root_duration = 0.4
+secondary_spell_mana_cost = 10.0
 cooldowns = ExtResource("3_djnaa")
 
 [node name="HealthComponent" parent="." index="0" unique_id=1766869561]
@@ -41,3 +43,6 @@ shape = SubResource("CylinderShape3D_ndf0d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpell" index="0" unique_id=2059091148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0062866, 0, 0)
 shape = SubResource("BoxShape3D_ur7ma")
+
+[node name="ManaComponent" parent="." index="10" unique_id=1469532642]
+max_mana = 100.0

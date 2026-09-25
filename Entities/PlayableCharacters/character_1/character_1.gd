@@ -2,8 +2,11 @@ extends PlayableCharacter
 
 @onready var main_spell_hb = $Hitboxes/MainSpell
 
-@export var main_spell_cast_time: float = 0
-@export var main_spell_self_slow: float = 0
+@export var main_spell_cast_time: float
+@export var main_spell_self_slow: float
+@export var secondary_spell_self_root_duration: float
+
+@export var secondary_spell_mana_cost: float
 
 func _ready() -> void:
 	super._ready()
@@ -19,7 +22,7 @@ func cast_main_spell():
 	
 	if is_main_spell_on_cooldown: return
 	
-	custom_rotation = true                                                      #SELF EFFECTS APPLIED
+	movement.custom_rotation = true                                             #SELF EFFECTS APPLIED
 	movement.slow_factor += main_spell_self_slow
 	
 	var mouse_pos = MouseManager.get_cursor_position_3d()                       #ROTAZIONE MOUSE
@@ -46,18 +49,31 @@ func cast_main_spell():
 		for target in targets:
 			if target.has_method("take_damage") and target != self:
 				target.take_damage.rpc(caster.attack.attack_damage)
-	
+		
 	movement.slow_factor -= main_spell_self_slow                                #SELF EFFECTS REMOVED
-	custom_rotation = false
+	movement.custom_rotation = false
 
 @rpc("any_peer","call_local", "reliable")
 func cast_secondary_spell():
 	if is_secondary_spell_on_cooldown: return
+	if !mana.can_spend(secondary_spell_mana_cost): return
+	
+	
+	
+	movement.can_move = false
 	
 	spell_cooldown_start.rpc("secondary")                                       #COOLDOWN
 	
 	#--- ⌄ server side ⌄ ---#
 	if multiplayer.is_server():
-		var caster = get_player_from_sender_id(multiplayer.get_remote_sender_id())
 		
-		caster.heal.rpc(caster.health.max_health * 0.1)
+		
+		var caster: PlayableCharacter = get_player_from_sender_id(multiplayer.get_remote_sender_id())
+		
+		if caster.mana.can_spend(secondary_spell_mana_cost):
+			mana.spend_mana(secondary_spell_mana_cost)
+		
+		caster.health.heal.rpc(caster.health.max_health * 0.1)
+	
+	await get_tree().create_timer(secondary_spell_self_root_duration).timeout
+	movement.can_move = true

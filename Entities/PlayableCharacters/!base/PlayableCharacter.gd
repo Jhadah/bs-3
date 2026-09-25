@@ -5,23 +5,20 @@ signal spell_cooldown_started_signal(spell: String)
 signal recast_window_started_signal(spell: String, duration)
 signal recasts_endend_signal(spell: String)
 
+@onready var mana: ManaComponent = $ManaComponent
+@onready var camera = $Camera3D
+
+@export var cooldowns: CharacterCooldowns
 var is_main_spell_on_cooldown: bool = false
 var is_secondary_spell_on_cooldown: bool = false
 
-
 var peer_id: int = -1
 var character_id: int = -1
-
-@export var cooldowns: CharacterCooldowns
-@onready var camera = $Camera3D
-
-var custom_rotation: bool = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _ready() -> void:
-	
 	if is_multiplayer_authority():
 		camera.make_current()
 
@@ -30,12 +27,14 @@ func _physics_process(delta: float) -> void:
 		handle_movement(delta)
 
 func handle_movement(delta: float):
+	if !movement.can_move: return
+	
 	var input = Input.get_vector("a", "d", "w", "s")
 	dir = Vector3(input.x, 0, input.y)
 	
 	velocity = dir * movement.actual_speed
 	
-	if dir != Vector3.ZERO and !custom_rotation:
+	if dir != Vector3.ZERO and movement.custom_rotation == false:
 		var target_rot: float = atan2(-dir.x, -dir.z)
 		rotation.y = lerp_angle(rotation.y, target_rot, delta * 7.0)
 	
