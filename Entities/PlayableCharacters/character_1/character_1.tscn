@@ -32,17 +32,18 @@ base_speed = 10.0
 [node name="AttackComponent" parent="." index="2" unique_id=1342503431]
 attack_damage = 10.0
 
+[node name="ManaComponent" parent="." index="3" unique_id=1469532642]
+max_mana = 100.0
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model" parent_id_path=PackedInt32Array(969807627) index="0" unique_id=1967936226]
 mesh = SubResource("CapsuleMesh_w6f7q")
 
-[node name="CollisionShape3D" parent="." index="4" unique_id=899961525]
+[node name="CollisionShape3D" parent="." index="5" unique_id=899961525]
 shape = SubResource("CylinderShape3D_ndf0d")
 
 [node name="MainSpell" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="0" unique_id=1293078815]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpell" index="0" unique_id=2059091148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0062866, 0, 0)
 shape = SubResource("BoxShape3D_ur7ma")
-
-[node name="ManaComponent" parent="." index="10" unique_id=1469532642]
-max_mana = 100.0

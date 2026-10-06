@@ -12,6 +12,12 @@ bg_color = Color(0, 0.7490196, 0, 1)
 
 [sub_resource type="Theme" id="Theme_w6f7q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6f7q"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7ma"]
+bg_color = Color(0, 0.52383804, 0.841644, 1)
+
 [node name="PlayerHUD" type="Control" unique_id=354633299]
 layout_mode = 3
 anchors_preset = 15
@@ -122,3 +128,23 @@ offset_bottom = 710.0
 scale = Vector2(0.275, 0.275)
 fill_mode = 4
 texture_progress = ExtResource("3_p5s83")
+
+[node name="ManaBar" type="ProgressBar" parent="." unique_id=1982704328]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 610.0
+offset_right = 726.0
+offset_bottom = 621.0
+theme_override_styles/background = SubResource("StyleBoxFlat_w6f7q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ur7ma")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ManaBar" unique_id=781567458]
+layout_mode = 0
+offset_left = 118.0
+offset_top = -3.0
+offset_right = 130.0
+offset_bottom = 13.0
+theme_override_font_sizes/font_size = 11
+text = "-/-"

@@ -4,11 +4,16 @@ extends Control
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var health_bar_label: Label = $HealthBar/HealthBarLabel
+
+@onready var mana_bar: ProgressBar = $ManaBar
+@onready var mana_bar_label: Label = $ManaBar/Label
+
 @onready var main_spell_label: Label = $MainSpell/MainSpellCooldown
 @onready var main_spell_icon: TextureRect = $MainSpell/MainSpellIcon
+@onready var main_spell_recast: TextureProgressBar = $MainSpell/MainSpellRecast
+
 @onready var secondary_spell_label: Label = $SecondarySpell/SecondarySpellCooldown
 @onready var secondary_spell_icon: TextureRect = $SecondarySpell/SecondarySpellIcon
-@onready var main_spell_recast: TextureProgressBar = $MainSpell/MainSpellRecast
 @onready var secondary_spell_recast: TextureProgressBar = $MainSpell/MainSpellRecast
 
 func _ready() -> void:
@@ -18,6 +23,8 @@ func _ready() -> void:
 	await parent.ready
 	
 	parent.health.health_updated.connect(_on_health_updated)
+	parent.mana.mana_updated.connect(_on_mana_updated)
+	
 	parent.spell_cooldown_started_signal.connect(_on_spell_cooldown_started)
 	parent.recast_window_started_signal.connect(_on_recast_window_start)
 	parent.recasts_endend_signal.connect(_on_recasts_endend)
@@ -30,10 +37,15 @@ func _ready() -> void:
 	health_bar.max_value = parent.health.max_health
 	
 	_on_health_updated(parent.health.current_health)
+	_on_mana_updated(parent.mana.current_mana)
 
 func _on_health_updated(new_amount: float):
 	health_bar.value = new_amount
 	health_bar_label.text = str((new_amount), "/", parent.health.max_health)
+
+func _on_mana_updated(new_amount: float):
+	mana_bar.value = new_amount
+	mana_bar_label.text = str((new_amount), "/", parent.mana.max_mana)
 
 func _on_spell_cooldown_started(spell: String):
 	var label: Label

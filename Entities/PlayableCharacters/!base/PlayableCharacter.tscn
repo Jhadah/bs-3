@@ -23,25 +23,25 @@ properties/1/replication_mode = 1
 script = ExtResource("2_3cowm")
 cooldowns = null
 
-[node name="CollisionShape3D" parent="." index="4" unique_id=899961525]
+[node name="ManaComponent" parent="." index="3" unique_id=1469532642 instance=ExtResource("5_mc71s")]
+
+[node name="CollisionShape3D" parent="." index="5" unique_id=899961525]
 shape = SubResource("CapsuleShape3D_y048k")
 
-[node name="Camera3D" type="Camera3D" parent="." index="5" unique_id=948669895]
+[node name="Camera3D" type="Camera3D" parent="." index="6" unique_id=948669895]
 transform = Transform3D(1, 0, 0, 0, 0.36248016, 0.9319916, 0, -0.9319916, 0.36248016, 0.050552964, 20.663328, 7.936764)
 top_level = true
 script = ExtResource("3_4axk5")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="6" unique_id=1933595297]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="7" unique_id=1933595297]
 replication_config = SubResource("SceneReplicationConfig_gnyp4")
 
-[node name="Hitboxes" type="Node3D" parent="." index="7" unique_id=49337274]
+[node name="Hitboxes" type="Node3D" parent="." index="8" unique_id=49337274]
 
-[node name="DEBUG MODEL" type="MeshInstance3D" parent="." index="8" unique_id=673551957]
+[node name="DEBUG MODEL" type="MeshInstance3D" parent="." index="9" unique_id=673551957]
 visible = false
 mesh = SubResource("CapsuleMesh_w6f7q")
 
-[node name="PlayerHUD" parent="." index="9" unique_id=354633299 instance=ExtResource("4_gp50t")]
-
-[node name="ManaComponent" parent="." index="10" unique_id=1469532642 instance=ExtResource("5_mc71s")]
+[node name="PlayerHUD" parent="." index="10" unique_id=354633299 instance=ExtResource("4_gp50t")]
 
 [node name="HealthBar" parent="." index="11" unique_id=233856957 instance=ExtResource("6_x0ova")]
