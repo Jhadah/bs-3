@@ -12,8 +12,8 @@ material = SubResource("StandardMaterial3D_oxffx")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndf0d"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ur7ma"]
-size = Vector3(4.001343, 1, 5.211914)
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6f7q"]
+size = Vector3(5.4470215, 1, 4.0266113)
 
 [node name="Character1" unique_id=823502691 instance=ExtResource("1_hfrbj")]
 script = ExtResource("2_mfn5y")
@@ -41,9 +41,8 @@ mesh = SubResource("CapsuleMesh_w6f7q")
 [node name="CollisionShape3D" parent="." index="5" unique_id=899961525]
 shape = SubResource("CylinderShape3D_ndf0d")
 
-[node name="MainSpell" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="0" unique_id=1293078815]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+[node name="MainSpell" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="0" unique_id=1943479169]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpell" index="0" unique_id=2059091148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0062866, 0, 0)
-shape = SubResource("BoxShape3D_ur7ma")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpell" index="0" unique_id=588043870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0030518)
+shape = SubResource("BoxShape3D_w6f7q")

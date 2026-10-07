@@ -1,10 +1,10 @@
+CollisionShape3D
+Area3D
 Label
 ProgressBar
 Node
 MeshInstance3D
 Timer
-CollisionShape3D
-Area3D
 Node3D
 MultiplayerSynchronizer
 Camera3D
@@ -12,4 +12,3 @@ CharacterBody3D
 Structure
 Vfx
 Sprite3D
-TextureProgressBar

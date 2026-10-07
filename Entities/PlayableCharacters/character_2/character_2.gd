@@ -1,33 +1,37 @@
 extends PlayableCharacter
 
+# Componenti
 @onready var main_spell_base_hb = $Hitboxes/MainSpellBase
 @onready var main_spell_emp_hb = $Hitboxes/MainSpellEmp
 @onready var main_spell_recast_timer: Timer = $MainSpellRecastWindow
 
+# Configurazione e Bilanciamento
 @export var main_spell_cast_time: float
-var current_cast: int = 0
-
 @export var main_spell_self_slow: float
 @export var secondary_spell_speed_buff: float
 @export var secondary_spell_speed_duration: float
 
+# Stato Interno
+var current_cast: int = 0
+
+# --- Ciclo di Vita ---
+
 func _ready() -> void:
 	super._ready()
-	
 	character_id = 1
-	
-	vfx_library = {
-		"main_spell": preload("uid://c8ub5ivyn07vp"),
-	}
+
+# --- Sistema di Spell e Abilità ---
 
 @rpc("any_peer","call_local", "reliable")
 func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
+	# SELF EFFECTS APPLIED
 	movement.custom_rotation = true
-	movement.slow_factor += main_spell_self_slow                                #SELF EFFECTS APPLIED
+	movement.slow_factor += main_spell_self_slow
 	
-	var mouse_pos = MouseManager.get_cursor_position_3d()                       #ROTAZIONE MOUSE
+	# ROTAZIONE MOUSE
+	var mouse_pos = MouseManager.get_cursor_position_3d()
 	if mouse_pos:
 		look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))
 	
@@ -37,32 +41,31 @@ func cast_main_spell():
 		
 		if current_cast == 0:
 			print("primo cast")
-			execute_main_spell_cast(caster, -45)
-			return
-		
-		if !main_spell_recast_timer.is_stopped():
+			execute_main_spell_cast(caster)
+		elif !main_spell_recast_timer.is_stopped():
 			if current_cast == 1:
 				print("secondo cast")
-				execute_main_spell_cast(caster, 45)
+				execute_main_spell_cast(caster)
 			elif current_cast == 2:
 				print("terzo cast")
-				execute_main_spell_cast(caster, 0, true)
+				execute_main_spell_cast(caster, true)
 	
 	await get_tree().create_timer(main_spell_cast_time).timeout
-	movement.custom_rotation = false                                                     #SELF EFFECTS REMOVED
+	
+	# SELF EFFECTS REMOVED
+	movement.custom_rotation = false
 	movement.slow_factor -= main_spell_self_slow
 
-func execute_main_spell_cast(caster:PlayableCharacter, sprite_rotation: float, is_emp: bool = false):
-	var vfx: SpriteBase3D = instantiate_vfx("main_spell", "Hitboxes/MainSpellBase")
-	
+func execute_main_spell_cast(caster: PlayableCharacter, is_emp: bool = false):
 	if !is_emp:
-		damage_area(main_spell_base_hb, caster.attack.attack_damage)
+		var damage = caster.attack.attack_damage
+		damage_area(main_spell_base_hb, damage)
 		current_cast += 1
-		vfx.global_rotation_degrees -= Vector3(sprite_rotation,0,0)
 		main_spell_recast_timer.start()
 		recast_window_started_signal.emit("main", main_spell_recast_timer.wait_time)
 	else:
-		damage_area(main_spell_emp_hb, caster.attack.attack_damage * 2)
+		var damage = crit(caster.attack.attack_damage)
+		damage_area(main_spell_emp_hb, damage)
 		current_cast = 0
 		main_spell_recast_timer.stop()
 		main_spell_recast_timer.timeout.emit()
@@ -71,10 +74,18 @@ func execute_main_spell_cast(caster:PlayableCharacter, sprite_rotation: float, i
 func cast_secondary_spell():
 	if is_secondary_spell_on_cooldown: return
 	
-	movement.buff_factor += secondary_spell_speed_buff                          #SELF EFFECTS APPLIED
-	spell_cooldown_start("secondary")                                           #COOLDOWN
+	# SELF EFFECTS APPLIED
+	movement.buff_factor += secondary_spell_speed_buff
+	
+	# COOLDOWN
+	spell_cooldown_start("secondary")
+	
 	await get_tree().create_timer(secondary_spell_speed_duration).timeout
-	movement.buff_factor -= secondary_spell_speed_buff                          #SELF EFFECTS REMOVED
+	
+	# SELF EFFECTS REMOVED
+	movement.buff_factor -= secondary_spell_speed_buff
+
+# --- Segnali e Eventi ---
 
 func _on_main_attack_recast_window_timeout() -> void:
 	spell_cooldown_start("main")

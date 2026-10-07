@@ -396,11 +396,11 @@ shadow_mesh = SubResource("ArrayMesh_1esaw")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hfrbj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lv5vm"]
-size = Vector3(3.052536, 1, 3.055664)
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6f7q"]
+size = Vector3(3.8916016, 1, 3.3964844)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r353i"]
-size = Vector3(3.9990234, 1, 1.4853516)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ur7ma"]
+size = Vector3(1, 1, 4.416748)
 
 [node name="Character2" unique_id=823502691 instance=ExtResource("1_oxffx")]
 script = ExtResource("2_nwtux")
@@ -459,25 +459,23 @@ mesh = SubResource("ArrayMesh_jeicd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11066897, 0.6346973)
 mesh = SubResource("ArrayMesh_eh208")
 
-[node name="CollisionShape3D" parent="." index="4" unique_id=899961525]
+[node name="CollisionShape3D" parent="." index="5" unique_id=899961525]
 shape = SubResource("CylinderShape3D_hfrbj")
-
-[node name="MainSpellBase" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="0" unique_id=460213099]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpellBase" index="0" unique_id=1560734293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5194321, 0, 0)
-shape = SubResource("BoxShape3D_lv5vm")
-
-[node name="MainSpellEmp" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="1" unique_id=773671434]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpellEmp" index="0" unique_id=1726413460]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9980297, 0, 0)
-shape = SubResource("BoxShape3D_r353i")
 
 [node name="MainSpellRecastWindow" type="Timer" parent="." index="8" unique_id=54436415]
 wait_time = 3.0
 one_shot = true
+
+[node name="MainSpellBase" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="0" unique_id=1412292355]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpellBase" index="0" unique_id=1804355257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6708984)
+shape = SubResource("BoxShape3D_w6f7q")
+
+[node name="MainSpellEmp" type="Area3D" parent="Hitboxes" parent_id_path=PackedInt32Array(49337274) index="1" unique_id=1531155656]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitboxes/MainSpellEmp" index="0" unique_id=1323555815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2772217)
+shape = SubResource("BoxShape3D_ur7ma")
 
 [connection signal="timeout" from="MainSpellRecastWindow" to="." method="_on_main_attack_recast_window_timeout"]

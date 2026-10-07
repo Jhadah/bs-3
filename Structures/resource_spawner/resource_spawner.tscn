@@ -123,3 +123,6 @@ mesh = SubResource("ArrayMesh_215e7")
 [node name="CollisionShape3D" parent="." index="2" unique_id=47366409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19946289, 0)
 shape = SubResource("BoxShape3D_6lh0i")
+
+[node name="HealthComponent" parent="." index="3" unique_id=1766869561]
+max_health = 200.0
