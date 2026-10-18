@@ -22,8 +22,10 @@ func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
 	# SELF EFFECTS APPLIED
-	movement.custom_rotation = true
-	movement.slow_factor += main_spell_self_slow
+	var speed_effect = Effect.new(Effect.Type.SPEED_DEBUFF,main_spell_cast_time,main_spell_self_slow, Effect.Calculation.PERCENTAGE)
+	effect.apply_effect(speed_effect)
+	var rotation_block = Effect.new(Effect.Type.ROTATION_BLOCK, main_spell_cast_time)
+	effect.apply_effect(rotation_block)
 	
 	# ROTAZIONE MOUSE
 	var mouse_pos = MouseManager.get_cursor_position_3d()
@@ -39,17 +41,14 @@ func cast_main_spell():
 		var caster = get_player_from_sender_id(multiplayer.get_remote_sender_id())
 		var damage_dealt = caster.attack.attack_damage # DAMAGE
 		damage_area(main_spell_hb, damage_dealt)
-	
-	# SELF EFFECTS REMOVED
-	movement.slow_factor -= main_spell_self_slow
-	movement.custom_rotation = false
 
 @rpc("any_peer","call_local", "reliable")
 func cast_secondary_spell():
 	if is_secondary_spell_on_cooldown: return
 	if !mana.can_spend(secondary_spell_mana_cost): return
 	
-	movement.can_move = false
+	var movement_block = Effect.new(Effect.Type.MOVEMENT_BLOCK, secondary_spell_self_root_duration)
+	effect.apply_effect(movement_block)
 	
 	# COOLDOWN
 	spell_cooldown_start.rpc("secondary")

@@ -28,12 +28,9 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _ready() -> void:
+	super._ready()
 	if is_multiplayer_authority():
 		camera.make_current()
-
-func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
-		handle_movement(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
@@ -41,22 +38,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			request_spell(cast_main_spell)
 		if event.is_action_pressed("shift"):
 			request_spell(cast_secondary_spell)
-
-# --- Movimento e Controllo ---
-
-func handle_movement(delta: float):
-	if !movement.can_move: return
-
-	var input = Input.get_vector("a", "d", "w", "s")
-	dir = Vector3(input.x, 0, input.y)
-
-	velocity = dir * movement.actual_speed
-
-	if dir != Vector3.ZERO and movement.custom_rotation == false:
-		var target_rot: float = atan2(-dir.x, -dir.z)
-		rotation.y = lerp_angle(rotation.y, target_rot, delta * 7.0)
-
-	move_and_slide()
 
 # --- Sistema di Spell e Abilità ---
 

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://52feoyy7gf8i" path="res://Components/HealthComponent/HealthComponent.tscn" id="1_y048k"]
 [ext_resource type="PackedScene" uid="uid://c83m7eo64dcou" path="res://Components/MovementComponent/MovementComponent.tscn" id="2_8xvi6"]
 [ext_resource type="PackedScene" uid="uid://b4dy5lmi2rpo8" path="res://Components/AttackComponent/AttackComponent.tscn" id="4_on4x7"]
+[ext_resource type="PackedScene" uid="uid://bitnetxsgtsk7" path="res://Components/EffectComponent/EffectComponent.tscn" id="5_pxkd2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndf0d"]
 
@@ -15,6 +16,8 @@ script = ExtResource("1_8xvi6")
 [node name="MovementComponent" parent="." unique_id=542472471 instance=ExtResource("2_8xvi6")]
 
 [node name="AttackComponent" parent="." unique_id=1342503431 instance=ExtResource("4_on4x7")]
+
+[node name="EffectComponent" parent="." unique_id=1660280139 instance=ExtResource("5_pxkd2")]
 
 [node name="Model" type="Node3D" parent="." unique_id=969807627]
 

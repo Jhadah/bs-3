@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bpjoyvpry6vaf" path="res://Components/ManaComponent/ManaComponent.tscn" id="5_mc71s"]
 [ext_resource type="PackedScene" uid="uid://du1krc5rdx5c" path="res://UI_Elements/Health_Bars/health_bar.tscn" id="6_x0ova"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y048k"]
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gnyp4"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -19,17 +17,16 @@ properties/1/replication_mode = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6f7q"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y048k"]
+
 [node name="PlayableCharacter" unique_id=823502691 instance=ExtResource("1_gnyp4")]
 script = ExtResource("2_3cowm")
 cooldowns = null
 
 [node name="ManaComponent" parent="." index="3" unique_id=1469532642 instance=ExtResource("5_mc71s")]
 
-[node name="CollisionShape3D" parent="." index="5" unique_id=899961525]
-shape = SubResource("CapsuleShape3D_y048k")
-
 [node name="Camera3D" type="Camera3D" parent="." index="6" unique_id=948669895]
-transform = Transform3D(1, 0, 0, 0, 0.36248016, 0.9319916, 0, -0.9319916, 0.36248016, 0.050552964, 20.663328, 7.936764)
+transform = Transform3D(1, 0, 0, 0, 0.36248016, 0.9319916, 0, -0.9319916, 0.36248016, 0.050552964, 19.316732, 7.4664097)
 top_level = true
 script = ExtResource("3_4axk5")
 
@@ -39,9 +36,11 @@ replication_config = SubResource("SceneReplicationConfig_gnyp4")
 [node name="Hitboxes" type="Node3D" parent="." index="8" unique_id=49337274]
 
 [node name="DEBUG MODEL" type="MeshInstance3D" parent="." index="9" unique_id=673551957]
-visible = false
 mesh = SubResource("CapsuleMesh_w6f7q")
 
 [node name="PlayerHUD" parent="." index="10" unique_id=354633299 instance=ExtResource("4_gp50t")]
 
 [node name="HealthBar" parent="." index="11" unique_id=233856957 instance=ExtResource("6_x0ova")]
+
+[node name="CollisionShape3D" parent="." index="12" unique_id=899961525]
+shape = SubResource("CapsuleShape3D_y048k")
