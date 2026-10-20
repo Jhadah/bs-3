@@ -22,10 +22,8 @@ func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
 	# SELF EFFECTS APPLIED
-	var speed_effect = Effect.new(Effect.Type.SPEED_DEBUFF,main_spell_cast_time,main_spell_self_slow, Effect.Calculation.PERCENTAGE)
-	effect.apply_effect(speed_effect)
-	var rotation_block = Effect.new(Effect.Type.ROTATION_BLOCK, main_spell_cast_time)
-	effect.apply_effect(rotation_block)
+	apply_effect(Effect.Type.SPEED_DEBUFF,main_spell_cast_time,main_spell_self_slow, Effect.Calculation.PERCENTAGE)#self slow
+	apply_effect(Effect.Type.ROTATION_BLOCK, main_spell_cast_time)#rotation block
 	
 	# ROTAZIONE MOUSE
 	var mouse_pos = MouseManager.get_cursor_position_3d()
@@ -60,6 +58,3 @@ func cast_secondary_spell():
 			mana.spend_mana(secondary_spell_mana_cost)
 		
 		caster.health.heal.rpc(caster.health.max_health * 0.1)
-	
-	await get_tree().create_timer(secondary_spell_self_root_duration).timeout
-	movement.can_move = true

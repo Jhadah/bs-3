@@ -1,11 +1,12 @@
-Node
+MeshInstance3D
 CollisionShape3D
 Area3D
+Node3D
+Projectile
+Timer
+Node
 Label
 ProgressBar
-MeshInstance3D
-Timer
-Node3D
 MultiplayerSynchronizer
 Camera3D
 CharacterBody3D

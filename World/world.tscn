@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpp5ux1eua8ua" path="res://UI_Elements/Character_Selection/character_selection.tscn" id="3_3f78f"]
 [ext_resource type="Texture2D" uid="uid://dba0hlbaxkxtc" path="res://World/39f1ee105d3c2347fee07f6cb078c2f0.jpg" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://cc2c3m01x6nbj" path="res://Structures/resource_spawner/resource_spawner.tscn" id="4_k8do8"]
+[ext_resource type="PackedScene" uid="uid://dcgaf2x3etuha" path="res://Structures/turret/turret.tscn" id="5_k8do8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w6f7q"]
 
@@ -50,3 +51,6 @@ offset_top = 31.0
 
 [node name="ResourceSpawner" parent="." unique_id=1283043747 instance=ExtResource("4_k8do8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.580627, 2.9575806, 0)
+
+[node name="Turret" parent="." unique_id=753370682 instance=ExtResource("5_k8do8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45078182, 1.3662605, -25.945736)

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bwumset7sqeid"]
+
+[ext_resource type="Script" uid="uid://b4cxdk3q1purf" path="res://Objects/projectile/Projectile.gd" id="1_sirro"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6f7q"]
+radius = 0.18532853
+
+[sub_resource type="SphereMesh" id="SphereMesh_w6f7q"]
+
+[node name="Projectile" type="CharacterBody3D" unique_id=1087386148]
+script = ExtResource("1_sirro")
+metadata/_custom_type_script = "uid://b4cxdk3q1purf"
+
+[node name="Model" type="Node3D" parent="." unique_id=19934201]
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=1770280294]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1016684235]
+shape = SubResource("SphereShape3D_w6f7q")
+
+[node name="DEBUG_MODEL" type="MeshInstance3D" parent="." unique_id=1746672826]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_w6f7q")

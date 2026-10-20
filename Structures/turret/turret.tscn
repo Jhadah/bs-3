@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dcgaf2x3etuha"]
+
+[ext_resource type="PackedScene" uid="uid://dvm4seoaor7hj" path="res://Structures/structure.tscn" id="1_okkba"]
+[ext_resource type="Script" uid="uid://d3i7n7npry7xu" path="res://Structures/turret/turret.gd" id="2_a54ce"]
+[ext_resource type="PackedScene" uid="uid://b4dy5lmi2rpo8" path="res://Components/AttackComponent/AttackComponent.tscn" id="2_cv56s"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w6f7q"]
+top_radius = 1.097168
+bottom_radius = 1.097168
+height = 4.692383
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w6f7q"]
+height = 4.6723633
+radius = 1.0883789
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ur7ma"]
+radius = 19.410156
+
+[node name="Turret" unique_id=1283043747 instance=ExtResource("1_okkba")]
+script = ExtResource("2_a54ce")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" parent_id_path=PackedInt32Array(2076658730) index="0" unique_id=1055874127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3461914, 0)
+mesh = SubResource("CylinderMesh_w6f7q")
+
+[node name="CollisionShape3D" parent="." index="2" unique_id=47366409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3361816, 0)
+shape = SubResource("CylinderShape3D_w6f7q")
+
+[node name="AttackComponent" parent="." index="4" unique_id=1342503431 instance=ExtResource("2_cv56s")]
+
+[node name="AttackRange" type="Area3D" parent="." index="5" unique_id=1557350024]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" index="0" unique_id=1303203078]
+shape = SubResource("CylinderShape3D_ur7ma")
+
+[node name="AttackTimer" type="Timer" parent="." index="6" unique_id=10715858]
+wait_time = 1.5
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

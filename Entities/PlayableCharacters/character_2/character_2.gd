@@ -27,8 +27,8 @@ func cast_main_spell():
 	if is_main_spell_on_cooldown: return
 	
 	# SELF EFFECTS APPLIED
-	movement.custom_rotation = true
-	movement.slow_factor += main_spell_self_slow
+	apply_effect(Effect.Type.SPEED_DEBUFF, main_spell_cast_time, main_spell_self_slow, Effect.Calculation.PERCENTAGE)#self slow
+	apply_effect(Effect.Type.ROTATION_BLOCK, main_spell_cast_time)#rotation block
 	
 	# ROTAZIONE MOUSE
 	var mouse_pos = MouseManager.get_cursor_position_3d()
@@ -49,12 +49,6 @@ func cast_main_spell():
 			elif current_cast == 2:
 				print("terzo cast")
 				execute_main_spell_cast(caster, true)
-	
-	await get_tree().create_timer(main_spell_cast_time).timeout
-	
-	# SELF EFFECTS REMOVED
-	movement.custom_rotation = false
-	movement.slow_factor -= main_spell_self_slow
 
 func execute_main_spell_cast(caster: PlayableCharacter, is_emp: bool = false):
 	if !is_emp:
@@ -75,15 +69,9 @@ func cast_secondary_spell():
 	if is_secondary_spell_on_cooldown: return
 	
 	# SELF EFFECTS APPLIED
-	movement.buff_factor += secondary_spell_speed_buff
-	
+	apply_effect(Effect.Type.SPEED_BUFF, secondary_spell_speed_duration, secondary_spell_speed_buff, Effect.Calculation.PERCENTAGE)
 	# COOLDOWN
 	spell_cooldown_start("secondary")
-	
-	await get_tree().create_timer(secondary_spell_speed_duration).timeout
-	
-	# SELF EFFECTS REMOVED
-	movement.buff_factor -= secondary_spell_speed_buff
 
 # --- Segnali e Eventi ---
 

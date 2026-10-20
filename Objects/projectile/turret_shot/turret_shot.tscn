@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cwyflev1myktq"]
+
+[ext_resource type="PackedScene" uid="uid://bwumset7sqeid" path="res://Objects/projectile/projectile.tscn" id="1_k2wc3"]
+[ext_resource type="Script" uid="uid://cmntq1pgfru73" path="res://Objects/projectile/turret_shot/turret_shot.gd" id="2_bplb7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_w6f7q"]
+
+[node name="TurretShot" unique_id=1087386148 instance=ExtResource("1_k2wc3")]
+script = ExtResource("2_bplb7")
+type = 1
+speed = 25.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" parent_id_path=PackedInt32Array(19934201) index="0" unique_id=962787865]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("SphereMesh_w6f7q")

@@ -17,7 +17,7 @@ size = Vector3(5.4470215, 1, 4.0266113)
 
 [node name="Character1" unique_id=823502691 instance=ExtResource("1_hfrbj")]
 script = ExtResource("2_mfn5y")
-main_spell_cast_time = 1.0
+main_spell_cast_time = 0.6
 main_spell_self_slow = 0.3
 secondary_spell_self_root_duration = 0.4
 secondary_spell_mana_cost = 10.0

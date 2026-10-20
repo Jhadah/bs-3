@@ -1,3 +1,6 @@
+res://Objects/projectile/turret_shot/
+res://Objects/projectile/
+res://Structures/turret/
 res://Components/EffectComponent/
 res://Components/
 res://Entities/PlayableCharacters/!base/

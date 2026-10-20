@@ -14,11 +14,12 @@ func _ready() -> void:
 	effect.expired.connect(_on_effect_expired)
 
 func die():
-	if self is PlayableCharacter:
-		visible = false
-		process_mode = Node.PROCESS_MODE_DISABLED
-	else:  #per minion etc
-		queue_free()
+	visible = false
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_effect_expired(e: Effect):
 	effect.remove_effect(e)
+
+func apply_effect(type: Effect.Type, duration: float, amount: float = 0, calculation : Effect.Calculation = Effect.Calculation.NO):
+		var _effect = Effect.new(type, duration, amount, calculation)
+		effect.apply_effect(_effect)
